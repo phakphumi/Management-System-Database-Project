@@ -1,0 +1,110 @@
+
+.nav-pills > li.active > a,.nav-pills > li.active > a:focus {
+  color: #8e1717;
+  background-color: transparent;
+}
+ .nav-pills > li.active > a:hover {
+  color: #7d1313;
+  background-color: #eeeeee;
+}
+a{
+  color: #111111;
+}
+.languageBar .btn-primary{
+  background-color:#424242  !important;
+  border-color: #424242;
+}
+.languageBar .btn-primary:hover{
+  background-color:#111111  !important;
+  border-color: #111111;
+}
+
+nav-button-group {
+  text-align: right;
+  padding-right: 20px;
+}
+
+@media screen and (max-width: 768px) {
+    .nav-button-group {
+      padding-right: 10px;
+    }
+    .nav-button-group>p {
+      display: none;
+    }
+}
+.languageBar>div{
+  top:8px;
+}
+.nav>li>p{
+  padding: 10px 0px;
+}
+nav.navbar{
+  padding-top: 10px;
+  margin-bottom: 10px;
+}
+.navbar-brand{
+  height: 65px;
+}
+.navbar-right {
+  margin-right: 20px;
+}
+ul.nav.navbar-right{
+  position: relative;
+  bottom: -30px;
+}
+html, body {
+  height: 100%;
+}
+.jumbotron{
+  background-color: white;
+}
+.btn-primary{
+    background-color: #7a1515;
+    border-color: inherit;
+}
+.btn-primary:hover,.btn-primary:active,.btn-primary:focus,.btn-primary:target{
+    background-color: #671212 !important;
+    border-color: inherit;
+}
+#login-form> .row{
+    margin-bottom: 12px;
+}
+#login-form input,#login-form select{
+    background-color: #212121;
+    color: #d8d8d8;
+}
+#login-form .input-group-addon{
+    background-color: #212121;
+    color: #d4d4d4;
+}
+
+main  >.jumbotron {
+
+}
+div.shadowBox {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: center;
+}
+header{
+  background-color: white;
+}
+#wrap{
+  min-height: 100%;
+  background-color: #e0e0e0;
+}
+footer{
+  background-color:#212121;
+  min-height: 3em;
+  clear: both;
+  position: relative;
+  z-index: 10;
+  margin-top: -3em;
+
+}
+@font-face { font-family: ThaiSans; src: url('font/ThaiSansNeue-Light.ttf'); }
+@font-face { font-family: ThaiSans; font-weight: bold; src: url('font/ThaiSansNeue-Light.ttf');}
+
+.thai-font{
+  font-size: 1.5em;
+  font-family: ThaiSans, sans-serif;
+}

@@ -53,6 +53,7 @@ function setup_studentGrade() {
         var myLineChart = new Chart($e, {
             type: 'bar',
             data: data,
+            responsive:false,
             options: opt,
         });
     }
@@ -133,6 +134,7 @@ function setup_disciplineScore() {
         var myDoughnutChart = new Chart($e, {
             type: 'doughnut',
             data: data,
+            responsive:false,
             options:  {
                 animation:{
                     animateScale:true

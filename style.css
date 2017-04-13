@@ -61,11 +61,11 @@ html, body {
 .jumbotron{
   background-color: white;
 }
-.btn-primary{
+.btn-primary.btn-red{
     background-color: #7a1515;
     border-color: inherit;
 }
-.btn-primary:hover,.btn-primary:active,.btn-primary:focus,.btn-primary:target{
+.btn-primary.btn-red:hover,.btn-primary.btn-red:active,.btn-primary.btn-red:focus,.btn-primary.btn-red:target{
     background-color: #671212 !important;
     border-color: inherit;
 }
@@ -88,9 +88,31 @@ select{
   -webkit-appearance:none;
 }
 div.shadowBox {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     text-align: center;
+    transition: 0.3s;
 }
+div.shadowBox:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+.shadowBox {
+
+}
+.shadowBox .shadowBox-upside{
+    color: #333333;
+    text-align: left;
+    padding: 5px 25px;
+    background-color: white;
+}
+.shadowBox p.subscript{
+    color: #7c7c7c;
+}
+.shadowBox .shadowBox-viewDetails{
+    background-color: #424242;
+    color: #eeeeee;
+}
+
+
 header{
   background-color: white;
 }

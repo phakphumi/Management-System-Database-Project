@@ -21,37 +21,57 @@
         <div id="wrap">
             <header></header>
             <!--# Code Start Here -->
-                <div class="container-fluid">
-                    <div class="row conclusion-bar">
-                        <div class="col-sm-1"></div>
-                        <div class="col-sm-2">
-                            <div class="shadowBox">
-                                <a class="link" href="#">
-                                    <div class="shadowBox-upside">
-                                        <h2 class="count">35</h2>
-                                        <p class="subscript">Supervisee</p>
-                                    </div>
-                                    <div class="shadowBox-viewDetails">
-                                        View Details
-                                    </div>
-                                </a>
+            <div style="padding:1px;margin-bottom:-10px;"></div>
+            <div class="container-fluid">
+                <div class="row conclusion-upperside autoHeight">
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-2">
+                        <div class="shadowBox">
+                            <a class="link" href="#">
+                                <div class="shadowBox-upperside">
+                                    <h2 class="count">35</h2>
+                                    <p class="subscript">Supervisee</p>
+                                </div>
+                                <div class="shadowBox-downside">
+                                    View Details
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row conclusion-downside">
+                    <div class="col-sm-offset-1 col-sm-7">
+                        <div class="shadowBox">
+                            <div class="shadowBox-upperside">
+                                <h4><b>Student Grade</b></h4>
+                                <canvas id="studentGrade" width="700" height="480"></canvas>
+                                <div style="padding:10px;"></div>
                             </div>
+                            <a href="#" class="link">
+                                <div class="shadowBox-downside">
+                                    View Details
+                                </div>
+                            </a>
                         </div>
 
                     </div>
-                </div>
-
-                <div style="padding:30px;"></div>
-                <div class="jumbotron col-lg-offset-4 col-lg-4  col-md-offset-3 col-md-6  col-sm-offset-3 col-sm-6  col-xs-offset-1 col-xs-10 shadowBox" data-pg-collapsed id="login-form">
-                    <div style="padding:20px;"></div>
-                    <div class="row">
-                      <h1>Hi</h1>
-                      <h3>Template :D</h3>
+                    <div class="col-sm-3">
+                        <div class="shadowBox">
+                            <div class="shadowBox-upperside">
+                                <h4><b>Discipline Score</b></h4>
+                                <canvas id="disciplineScore" width="100%" height="200"></canvas>
+                            </div>
+                            <a href="#" class="link">
+                                <div class="shadowBox-downside">
+                                    View Details
+                                </div>
+                            </a>
+                        </div>
                     </div>
-                    <div style="padding:20px;"></div>
                 </div>
+            </div>
 
-
+            <div style="padding:20px;"></div>
 
             <!-- # Code End Here -->
         </div>
@@ -73,6 +93,8 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.7/js/bootstrap-dialog.min.js"></script>
         <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
         <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.min.js"></script>
+        <script src="js/plugin/Chart.PieceLabel.min.js"></script>
         <script src="js/instructor.js"></script>
     </body>
 </html>

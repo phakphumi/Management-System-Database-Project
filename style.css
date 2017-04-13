@@ -27,6 +27,12 @@ nav-button-group {
   padding-right: 20px;
 }
 
+@media screen and (min-width: 1370px) {
+    #wrap > .container-fluid {
+        margin: 0px 250px;
+    }
+}
+
 @media screen and (max-width: 768px) {
     .nav-button-group {
       padding-right: 10px;
@@ -80,7 +86,9 @@ html, body {
     background-color: #212121;
     color: #d4d4d4;
 }
-
+#wrap>.container-fluid>.row{
+    margin-bottom: 30px;
+}
 main  >.jumbotron {
 
 }
@@ -98,22 +106,33 @@ div.shadowBox:hover {
 .shadowBox a:hover,.shadowBox a:active,.shadowBox a:focus{
     text-decoration: none;
 }
-.shadowBox .shadowBox-upside{
+.shadowBox .shadowBox-upperside{
     color: #333333;
     text-align: left;
     padding: 5px 25px;
-    padding-right: 5px;
     background-color: white;
 }
-.shadowBox p.subscript{
+.conclusion-upperside .shadowBox .shadowBox-upperside{
+    padding-right: 5px;
+}
+.shadowBox .subscript{
     color: #7c7c7c;
 }
-.shadowBox .shadowBox-viewDetails{
+.shadowBox .shadowBox-downside{
     background-color: #424242;
     color: #eeeeee;
     padding: 3px;
 }
-
+.row.autoHeight{
+    /*overflow: hidden;*/
+}
+.row.autoHeight > div {
+    height:100%; position:relative;
+}
+/*.row.autoHeight > div > div{
+    padding-bottom: 1000px;
+    margin-bottom: -1000px;
+}*/
 
 header{
   background-color: white;
@@ -129,7 +148,6 @@ footer{
   position: relative;
   z-index: 10;
   margin-top: -3em;
-
 }
 @font-face { font-family: ThaiSans; src: url('font/ThaiSansNeue-Light.ttf'); }
 @font-face { font-family: ThaiSans; font-weight: bold; src: url('font/ThaiSansNeue-Light.ttf');}

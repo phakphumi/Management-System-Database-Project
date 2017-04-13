@@ -95,13 +95,14 @@ div.shadowBox {
 div.shadowBox:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
-.shadowBox {
-
+.shadowBox a:hover,.shadowBox a:active,.shadowBox a:focus{
+    text-decoration: none;
 }
 .shadowBox .shadowBox-upside{
     color: #333333;
     text-align: left;
     padding: 5px 25px;
+    padding-right: 5px;
     background-color: white;
 }
 .shadowBox p.subscript{
@@ -110,6 +111,7 @@ div.shadowBox:hover {
 .shadowBox .shadowBox-viewDetails{
     background-color: #424242;
     color: #eeeeee;
+    padding: 3px;
 }
 
 

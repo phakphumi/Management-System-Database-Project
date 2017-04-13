@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <title>Chula Computer Engineering</title>
+        <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://rawgit.com/wenzhixin/bootstrap-table/master/src/bootstrap-table.css">
+        <link rel="stylesheet" href="https://rawgit.com/vitalets/x-editable/master/dist/bootstrap3-editable/css/bootstrap-editable.css">
+        <link href="style.css" rel="stylesheet">
+        <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.7/css/bootstrap-dialog.min.css" rel="stylesheet">
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    </head>
+    <body>
+        <div id="wrap">
+            <header></header>
+            <!--# Code Start Here -->
+            <div style="padding:30px;"></div>
+            <div class="container" id="main">
+                <ul class="nav nav-tabs">
+                    <li role="presentation" class="active"><a data-toggle="tab" id="personal" href="#personalContent" onclick="tabRefresh(this)">Personal</a></li>
+                    <li role="presentation"><a data-toggle="tab" id="enrolled" href="#enrolledContent" onclick="tabRefresh(this)">Enrolled</a></li>
+                    <li role="presentation"><a data-toggle="tab" id="internship" href="#internshipContent" onclick="tabRefresh(this)">Internship</a></li>
+                    <li role="presentation"><a data-toggle="tab" id="activity" href="#activityContent" onclick="tabRefresh(this)">Activity</a></li>
+                    <li role="presentation"><a data-toggle="tab" id="achievement" href="#achievementContent" onclick="tabRefresh(this)">Achievement</a></li>
+                    <li role="presentation"><a data-toggle="tab" id="intermission" href="#intermissionContent" onclick="tabRefresh(this)">Intermission</a></li>
+                    <li role="presentation"><a data-toggle="tab" id="discipline" href="#disciplineContent" onclick="tabRefresh(this)">Discipline</a></li>
+                </ul>
+                <div id="tabContent" class="jumbotron col-lg-12">
+                    
+                    <div class="tab-content">
+                        <div id="personalContent" class="tab-pane fade in active">
+                            <div id="personalToolbar">
+                                <button id="remove" class="btn btn-danger" disabled>
+                                    <i class="glyphicon glyphicon-remove"></i> Delete
+                                </button>
+                                <button id="add" class="btn btn-primary">
+                                    <i class="glyphicon glyphicon-plus"></i> Add
+                                </button>
+                            </div>
+                            <table  id="personalTable"
+                                data-toolbar="#personalToolbar"
+                                data-search="true"
+                                data-show-refresh="true"
+                                data-show-columns="true"
+                                data-show-export="true"
+                                data-detail-view="true"
+                                data-detail-formatter="detailFormatter"
+                                data-minimum-count-columns="2"
+                                data-id-field="id"
+                                data-pagination="true"
+                                data-page-list="[10, 25, 50, 100, ALL]"
+                                data-response-handler="responseHandler">
+                            </table>
+                        </div>
+                        <div id="enrolledContent" class="tab-pane fade">
+                            <div id="enrolledToolbar">
+                                <button id="remove" class="btn btn-danger" disabled>
+                                    <i class="glyphicon glyphicon-remove"></i> Delete
+                                </button>
+                                <button id="add" class="btn btn-primary">
+                                    <i class="glyphicon glyphicon-plus"></i> Add
+                                </button>
+                            </div>
+                            <table  id="enrolledTable"
+                                data-toolbar="#enrolledToolbar"
+                                data-search="true"
+                                data-show-refresh="true"
+                                data-show-columns="true"
+                                data-show-export="true"
+                                data-detail-view="true"
+                                data-detail-formatter="detailFormatter"
+                                data-minimum-count-columns="2"
+                                data-id-field="id"
+                                data-pagination="true"
+                                data-page-list="[10, 25, 50, 100, ALL]"
+                                data-response-handler="responseHandler">
+                            </table>
+                        </div>
+                        <div id="internshipContent" class="tab-pane fade">
+                            <div id="internshipToolbar">
+                                <button id="remove" class="btn btn-danger" disabled>
+                                    <i class="glyphicon glyphicon-remove"></i> Delete
+                                </button>
+                                <button id="add" class="btn btn-primary">
+                                    <i class="glyphicon glyphicon-plus"></i> Add
+                                </button>
+                            </div>
+                            <table  id="internshipTable"
+                                data-toolbar="#internshipToolbar"
+                                data-search="true"
+                                data-show-refresh="true"
+                                data-show-columns="true"
+                                data-show-export="true"
+                                data-detail-view="true"
+                                data-detail-formatter="detailFormatter"
+                                data-minimum-count-columns="2"
+                                data-id-field="id"
+                                data-pagination="true"
+                                data-page-list="[10, 25, 50, 100, ALL]"
+                                data-response-handler="responseHandler">
+                            </table>
+                        </div>
+                        <div id="activityContent" class="tab-pane fade">
+                            <div id="activityToolbar">
+                                <button id="remove" class="btn btn-danger" disabled>
+                                    <i class="glyphicon glyphicon-remove"></i> Delete
+                                </button>
+                                <button id="add" class="btn btn-primary">
+                                    <i class="glyphicon glyphicon-plus"></i> Add
+                                </button>
+                            </div>
+                            <table  id="activityTable"
+                                data-toolbar="#activityToolbar"
+                                data-search="true"
+                                data-show-refresh="true"
+                                data-show-columns="true"
+                                data-show-export="true"
+                                data-detail-view="true"
+                                data-detail-formatter="detailFormatter"
+                                data-minimum-count-columns="2"
+                                data-id-field="id"
+                                data-pagination="true"
+                                data-page-list="[10, 25, 50, 100, ALL]"
+                                data-response-handler="responseHandler">
+                            </table>
+                        </div>
+                        <div id="achievementContent" class="tab-pane fade">
+                            <div id="achievementToolbar">
+                                <button id="remove" class="btn btn-danger" disabled>
+                                    <i class="glyphicon glyphicon-remove"></i> Delete
+                                </button>
+                                <button id="add" class="btn btn-primary">
+                                    <i class="glyphicon glyphicon-plus"></i> Add
+                                </button>
+                            </div>
+                            <table  id="achievementTable"
+                                data-toolbar="#achievementToolbar"
+                                data-search="true"
+                                data-show-refresh="true"
+                                data-show-columns="true"
+                                data-show-export="true"
+                                data-detail-view="true"
+                                data-detail-formatter="detailFormatter"
+                                data-minimum-count-columns="2"
+                                data-id-field="id"
+                                data-pagination="true"
+                                data-page-list="[10, 25, 50, 100, ALL]"
+                                data-response-handler="responseHandler">
+                            </table>
+                        </div>
+                        <div id="intermissionContent" class="tab-pane fade">
+                            <div id="intermissionToolbar">
+                                <button id="remove" class="btn btn-danger" disabled>
+                                    <i class="glyphicon glyphicon-remove"></i> Delete
+                                </button>
+                                <button id="add" class="btn btn-primary">
+                                    <i class="glyphicon glyphicon-plus"></i> Add
+                                </button>
+                            </div>
+                            <table  id="intermissionTable"
+                                data-toolbar="#intermissionToolbar"
+                                data-search="true"
+                                data-show-refresh="true"
+                                data-show-columns="true"
+                                data-show-export="true"
+                                data-detail-view="true"
+                                data-detail-formatter="detailFormatter"
+                                data-minimum-count-columns="2"
+                                data-id-field="id"
+                                data-pagination="true"
+                                data-page-list="[10, 25, 50, 100, ALL]"
+                                data-response-handler="responseHandler">
+                            </table>
+                        </div>
+                        <div id="disciplineContent" class="tab-pane fade">
+                            <div id="disciplineToolbar">
+                                <button id="remove" class="btn btn-danger" disabled>
+                                    <i class="glyphicon glyphicon-remove"></i> Delete
+                                </button>
+                                <button id="add" class="btn btn-primary">
+                                    <i class="glyphicon glyphicon-plus"></i> Add
+                                </button>
+                            </div>
+                            <table  id="disciplineTable"
+                                data-toolbar="#disciplineToolbar"
+                                data-search="true"
+                                data-show-refresh="true"
+                                data-show-columns="true"
+                                data-show-export="true"
+                                data-detail-view="true"
+                                data-detail-formatter="detailFormatter"
+                                data-minimum-count-columns="2"
+                                data-id-field="id"
+                                data-pagination="true"
+                                data-page-list="[10, 25, 50, 100, ALL]"
+                                data-response-handler="responseHandler">
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="padding:30px;"></div>
+            <!-- # Code End Here -->
+        </div>
+        <footer></footer>
+
+        <script src="assets/js/jquery.min.js"></script>
+        <script>
+            $(function(){
+              $("header").load("assembled.html header",function(){
+                  $('#languageBar').bootstrapToggle()
+              });
+              $("footer").load("assembled.html footer");
+            });
+        </script>
+        <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.7/js/bootstrap-dialog.min.js"></script>
+        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+        <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
+
+        <script src="bootstrap/js/bootstrap.min.js"></script>
+        <script src="https://rawgit.com/wenzhixin/bootstrap-table/master/src/bootstrap-table.js"></script>
+        <script src="https://rawgit.com/vitalets/x-editable/master/dist/bootstrap3-editable/js/bootstrap-editable.js"></script>
+        <script src="https://rawgit.com/wenzhixin/bootstrap-table/master/src/extensions/editable/bootstrap-table-editable.js"></script>
+        <script>
+
+            $(function () {
+                var $table = $('#personalTable').bootstrapTable({
+                    idField: 'nationalID',
+                    data: [
+                            {
+                                nationalID: "1101402006095",
+                                studentID: "5731087821",
+                                firstName: "Pakpoom",
+                                lastName: "Thaweesitthichat",
+                                programName: "Bachelor of Engineering, B.Eng. (Computer Engineering)",
+                                status: "On-studying",
+                                advisor: "Vishnu Kotrajaras",
+                                gender: "Male",
+                                birthDate: "26/11/2536",
+                                religion: "Buddhist",
+                                nationality: "Thai",
+                                email: "pakpoom.thawee@gmail.com",
+                                facebook: "https://www.facebook.com/phakphumikl",
+                                currentAddress: "39/16 Pahonyothin Rd, Pakpreaw, Muaeng, Saraburi",
+                                phone: "66876678775"
+                            },{
+                                nationalID: "1234567890123",
+                                studentID: "5733027821",
+                                firstName: "Thuchchai",
+                                lastName: "Jiamsorn",
+                                programName: "Bachelor of Engineering, B.Eng. (Computer Engineering)",
+                                status: "Punishment",
+                                advisor: "Vishnu Kotrajaras",
+                                gender: "Male",
+                                birthDate: "26/12/2538",
+                                religion: "None",
+                                nationality: "Thai",
+                                email: "naikiware@gmail.com",
+                                facebook: "https://www.facebook.com/milkyway",
+                                currentAddress: "39/16 Pahonyothin Rd, Pakpreaw, Muaeng, Saraburi",
+                                phone: "66876628576"
+                            },{
+                                nationalID: "0987654321093",
+                                studentID: "5731111121",
+                                firstName: "Atthraporn",
+                                lastName: "JingjaiDee",
+                                programName: "Bachelor of Engineering, B.Eng. (Computer Engineering)",
+                                status: "Retired",
+                                advisor: "Vishnu Kotrajaras",
+                                gender: "Male",
+                                birthDate: "26/11/2536",
+                                religion: "Buddhist",
+                                nationality: "Thai",
+                                email: "porpor@gmail.com",
+                                facebook: "https://www.facebook.com/por",
+                                currentAddress: "39/16 Pahonyothin Rd, Pakpreaw, Muaeng, Saraburi",
+                                phone: "66872638475"
+                            },{
+                                nationalID: "9911402302095",
+                                studentID: "5730887221",
+                                firstName: "Oraphan",
+                                lastName: "Gamwongwan",
+                                programName: "Bachelor of Engineering, B.Eng. (Computer Engineering)",
+                                status: "Graduated",
+                                advisor: "Vishnu Kotrajaras",
+                                gender: "Male",
+                                birthDate: "26/01/2539",
+                                religion: "Buddhist",
+                                nationality: "Thai",
+                                email: "preaw.preaw@gmail.com",
+                                facebook: "https://www.facebook.com/praew",
+                                currentAddress: "39/16 Pahonyothin Rd, Pakpreaw, Muaeng, Saraburi",
+                                phone: "66873648735"
+                            },{
+                                nationalID: "1101402006095",
+                                studentID: "5731012721",
+                                firstName: "Kosate",
+                                lastName: "Thaweesitthichat",
+                                programName: "Master of Science, M.Sc. (Computer Science)",
+                                status: "On-studying",
+                                advisor: "Vishnu Kotrajaras",
+                                gender: "Male",
+                                birthDate: "26/11/2530",
+                                religion: "Buddhist",
+                                nationality: "Thai",
+                                email: "kosatelim@gmail.com",
+                                facebook: "https://www.facebook.com/neungkl",
+                                currentAddress: "39/16 Pahonyothin Rd, Pakpreaw, Muaeng, Saraburi",
+                                phone: "66840243173"
+                            },{
+                                nationalID: "1101402006095",
+                                studentID: "5731127821",
+                                firstName: "Kanokpon",
+                                lastName: "Donretired",
+                                programName: "Bachelor of Engineering, B.Eng. (Computer Engineering)",
+                                status: "Probation",
+                                advisor: "Vishnu Kotrajaras",
+                                gender: "Male",
+                                birthDate: "23/02/2531",
+                                religion: "Christ",
+                                nationality: "Thai",
+                                email: "pingping@gmail.com",
+                                facebook: "https://www.facebook.com/pingping",
+                                currentAddress: "39/16 Pahonyothin Rd, Pakpreaw, Muaeng, Saraburi",
+                                phone: "66864618275"
+                            },{
+                                nationalID: "1101402006095",
+                                studentID: "5731087821",
+                                firstName: "Pakpoom",
+                                lastName: "Thaweesitthichat",
+                                programName: "Bachelor of Engineering, B.Eng. (Computer Engineering)",
+                                status: "On-studying",
+                                advisor: "Vishnu Kotrajaras",
+                                gender: "Male",
+                                birthDate: "26/11/2536",
+                                religion: "Buddhist",
+                                nationality: "Thai",
+                                email: "pakpoom.thawee@gmail.com",
+                                facebook: "https://www.facebook.com/phakphumikl",
+                                currentAddress: "39/16 Pahonyothin Rd, Pakpreaw, Muaeng, Saraburi",
+                                phone: "66876678775"
+                            },{
+                                nationalID: "1234567890123",
+                                studentID: "5733027821",
+                                firstName: "Thuchchai",
+                                lastName: "Jiamsorn",
+                                programName: "Bachelor of Engineering, B.Eng. (Computer Engineering)",
+                                status: "Punishment",
+                                advisor: "Vishnu Kotrajaras",
+                                gender: "Male",
+                                birthDate: "26/12/2538",
+                                religion: "None",
+                                nationality: "Thai",
+                                email: "naikiware@gmail.com",
+                                facebook: "https://www.facebook.com/milkyway",
+                                currentAddress: "39/16 Pahonyothin Rd, Pakpreaw, Muaeng, Saraburi",
+                                phone: "66876628576"
+                            },{
+                                nationalID: "0987654321093",
+                                studentID: "5731111121",
+                                firstName: "Atthraporn",
+                                lastName: "JingjaiDee",
+                                programName: "Bachelor of Engineering, B.Eng. (Computer Engineering)",
+                                status: "Retired",
+                                advisor: "Vishnu Kotrajaras",
+                                gender: "Male",
+                                birthDate: "26/11/2536",
+                                religion: "Buddhist",
+                                nationality: "Thai",
+                                email: "porpor@gmail.com",
+                                facebook: "https://www.facebook.com/por",
+                                currentAddress: "39/16 Pahonyothin Rd, Pakpreaw, Muaeng, Saraburi",
+                                phone: "66872638475"
+                            },{
+                                nationalID: "9911402302095",
+                                studentID: "5730887221",
+                                firstName: "Oraphan",
+                                lastName: "Gamwongwan",
+                                programName: "Bachelor of Engineering, B.Eng. (Computer Engineering)",
+                                status: "Graduated",
+                                advisor: "Vishnu Kotrajaras",
+                                gender: "Male",
+                                birthDate: "26/01/2539",
+                                religion: "Buddhist",
+                                nationality: "Thai",
+                                email: "preaw.preaw@gmail.com",
+                                facebook: "https://www.facebook.com/praew",
+                                currentAddress: "39/16 Pahonyothin Rd, Pakpreaw, Muaeng, Saraburi",
+                                phone: "66873648735"
+                            },{
+                                nationalID: "1101402006095",
+                                studentID: "5731012721",
+                                firstName: "Kosate",
+                                lastName: "Thaweesitthichat",
+                                programName: "Master of Science, M.Sc. (Computer Science)",
+                                status: "On-studying",
+                                advisor: "Vishnu Kotrajaras",
+                                gender: "Male",
+                                birthDate: "26/11/2530",
+                                religion: "Buddhist",
+                                nationality: "Thai",
+                                email: "kosatelim@gmail.com",
+                                facebook: "https://www.facebook.com/neungkl",
+                                currentAddress: "39/16 Pahonyothin Rd, Pakpreaw, Muaeng, Saraburi",
+                                phone: "66840243173"
+                            },{
+                                nationalID: "1101402006095",
+                                studentID: "5731127821",
+                                firstName: "Kanokpon",
+                                lastName: "Donretired",
+                                programName: "Bachelor of Engineering, B.Eng. (Computer Engineering)",
+                                status: "Probation",
+                                advisor: "Vishnu Kotrajaras",
+                                gender: "Male",
+                                birthDate: "23/02/2531",
+                                religion: "Christ",
+                                nationality: "Thai",
+                                email: "pingping@gmail.com",
+                                facebook: "https://www.facebook.com/pingping",
+                                currentAddress: "39/16 Pahonyothin Rd, Pakpreaw, Muaeng, Saraburi",
+                                phone: "66864618275"
+                            },
+                        ],
+                    columns: [
+                    {
+                        field: 'state',
+                        checkbox: true,
+                        align: 'center',
+                        valign: 'middle'
+                    },    
+                    {
+                        field: 'nationalID',
+                        title: 'National ID',
+                        visible: true,
+                    }, {
+                        field: 'studentID',
+                        title: 'Student ID',
+                        visible: true
+                    }, {
+                        field: 'firstName',
+                        title: 'First Name',
+                        visible: true,
+                        editable: {
+                            type: 'text'
+                        }
+                    }, {
+                        field: 'lastName',
+                        title: 'Last Name',
+                        visible: true,
+                        editable: {
+                            type: 'text'
+                        }
+                    }, {
+                        field: 'programName',
+                        title: 'Program Name',
+                        visible: true,
+                        editable: {
+                            type: 'text'
+                        }
+                    }, {
+                        field: 'status',
+                        title: 'Status',
+                        visible: true,
+                        editable: {
+                            type: 'text'
+                        }
+                    }, {
+                        field: 'advisor',
+                        title: 'Advisor',
+                        visible: true,
+                        editable: {
+                            type: 'text'
+                        }
+                    }, {
+                        field: 'gender',
+                        title: 'Gender',
+                        visible: false,
+                        editable: {
+                            type: 'text'
+                        }
+                    }, {
+                        field: 'birthDate',
+                        title: 'Birth Date',
+                        visible: false,
+                        editable: {
+                            type: 'text'
+                        }
+                    }, {
+                        field: 'religion',
+                        title: 'Religion',
+                        visible: false,
+                        editable: {
+                            type: 'text'
+                        }
+                    }, {
+                        field: 'nationality',
+                        title: 'Nationality',
+                        visible: false,
+                        editable: {
+                            type: 'text'
+                        }
+                    }, {
+                        field: 'email',
+                        title: 'Email',
+                        visible: false,
+                        editable: {
+                            type: 'text'
+                        }
+                    }, {
+                        field: 'facebook',
+                        title: 'Facebook Url',
+                        visible: false,
+                        editable: {
+                            type: 'text'
+                        }
+                    }, {
+                        field: 'currentAddress',
+                        title: 'Current Address',
+                        visible: false,
+                        editable: {
+                            type: 'textarea'
+                        }
+                    }, {
+                        field: 'phone',
+                        title: 'Phone',
+                        visible: true,
+                        editable: {
+                            type: 'text'
+                        }
+                    }]
+                });
+                $table.on('editable-save.bs.table', function (e, field, row, old, $el) {
+                        var $els = $table.find('.editable'),
+                        next = $els.index($el) + 1;
+
+                        if (next >= $els.length) {
+                            return;
+                        }
+
+                        $els.eq(next).editable('show');
+                });
+            });
+
+            function tabRefresh(itemElement) {
+
+                var id = itemElement.id;
+
+                if (id === "enrolled") {
+
+                    var $table = $('#enrolledTable').bootstrapTable({
+                    idField: 'studentID',
+                    data: [
+                            {
+                                nationalID: "1101402006095",
+                                studentID: "5731087821",
+                                firstName: "Pakpoom",
+                                lastName: "Thaweesitthichat",
+                                programName: "Bachelor of Engineering, B.Eng. (Computer Engineering)",
+                                status: "On-studying",
+                                advisor: "Vishnu Kotrajaras",
+                                gender: "Male",
+                                birthDate: "26/11/2536",
+                                religion: "Buddhist",
+                                nationality: "Thai",
+                                email: "pakpoom.thawee@gmail.com",
+                                facebook: "https://www.facebook.com/phakphumikl",
+                                currentAddress: "39/16 Pahonyothin Rd, Pakpreaw, Muaeng, Saraburi",
+                                phone: "66876678775"
+                            },{
+                                nationalID: "1234567890123",
+                                studentID: "5733027821",
+                                firstName: "Thuchchai",
+                                lastName: "Jiamsorn",
+                                programName: "Bachelor of Engineering, B.Eng. (Computer Engineering)",
+                                status: "Punishment",
+                                advisor: "Vishnu Kotrajaras",
+                                gender: "Male",
+                                birthDate: "26/12/2538",
+                                religion: "None",
+                                nationality: "Thai",
+                                email: "naikiware@gmail.com",
+                                facebook: "https://www.facebook.com/milkyway",
+                                currentAddress: "39/16 Pahonyothin Rd, Pakpreaw, Muaeng, Saraburi",
+                                phone: "66876628576"
+                            },{
+                                nationalID: "0987654321093",
+                                studentID: "5731111121",
+                                firstName: "Atthraporn",
+                                lastName: "JingjaiDee",
+                                programName: "Bachelor of Engineering, B.Eng. (Computer Engineering)",
+                                status: "Retired",
+                                advisor: "Vishnu Kotrajaras",
+                                gender: "Male",
+                                birthDate: "26/11/2536",
+                                religion: "Buddhist",
+                                nationality: "Thai",
+                                email: "porpor@gmail.com",
+                                facebook: "https://www.facebook.com/por",
+                                currentAddress: "39/16 Pahonyothin Rd, Pakpreaw, Muaeng, Saraburi",
+                                phone: "66872638475"
+                            },{
+                                nationalID: "9911402302095",
+                                studentID: "5730887221",
+                                firstName: "Oraphan",
+                                lastName: "Gamwongwan",
+                                programName: "Bachelor of Engineering, B.Eng. (Computer Engineering)",
+                                status: "Graduated",
+                                advisor: "Vishnu Kotrajaras",
+                                gender: "Male",
+                                birthDate: "26/01/2539",
+                                religion: "Buddhist",
+                                nationality: "Thai",
+                                email: "preaw.preaw@gmail.com",
+                                facebook: "https://www.facebook.com/praew",
+                                currentAddress: "39/16 Pahonyothin Rd, Pakpreaw, Muaeng, Saraburi",
+                                phone: "66873648735"
+                            },{
+                                nationalID: "1101402006095",
+                                studentID: "5731012721",
+                                firstName: "Kosate",
+                                lastName: "Thaweesitthichat",
+                                programName: "Master of Science, M.Sc. (Computer Science)",
+                                status: "On-studying",
+                                advisor: "Vishnu Kotrajaras",
+                                gender: "Male",
+                                birthDate: "26/11/2530",
+                                religion: "Buddhist",
+                                nationality: "Thai",
+                                email: "kosatelim@gmail.com",
+                                facebook: "https://www.facebook.com/neungkl",
+                                currentAddress: "39/16 Pahonyothin Rd, Pakpreaw, Muaeng, Saraburi",
+                                phone: "66840243173"
+                            },{
+                                nationalID: "1101402006095",
+                                studentID: "5731127821",
+                                firstName: "Kanokpon",
+                                lastName: "Donretired",
+                                programName: "Bachelor of Engineering, B.Eng. (Computer Engineering)",
+                                status: "Probation",
+                                advisor: "Vishnu Kotrajaras",
+                                gender: "Male",
+                                birthDate: "23/02/2531",
+                                religion: "Christ",
+                                nationality: "Thai",
+                                email: "pingping@gmail.com",
+                                facebook: "https://www.facebook.com/pingping",
+                                currentAddress: "39/16 Pahonyothin Rd, Pakpreaw, Muaeng, Saraburi",
+                                phone: "66864618275"
+                            },{
+                                nationalID: "1101402006095",
+                                studentID: "5731087821",
+                                firstName: "Pakpoom",
+                                lastName: "Thaweesitthichat",
+                                programName: "Bachelor of Engineering, B.Eng. (Computer Engineering)",
+                                status: "On-studying",
+                                advisor: "Vishnu Kotrajaras",
+                                gender: "Male",
+                                birthDate: "26/11/2536",
+                                religion: "Buddhist",
+                                nationality: "Thai",
+                                email: "pakpoom.thawee@gmail.com",
+                                facebook: "https://www.facebook.com/phakphumikl",
+                                currentAddress: "39/16 Pahonyothin Rd, Pakpreaw, Muaeng, Saraburi",
+                                phone: "66876678775"
+                            },{
+                                nationalID: "1234567890123",
+                                studentID: "5733027821",
+                                firstName: "Thuchchai",
+                                lastName: "Jiamsorn",
+                                programName: "Bachelor of Engineering, B.Eng. (Computer Engineering)",
+                                status: "Punishment",
+                                advisor: "Vishnu Kotrajaras",
+                                gender: "Male",
+                                birthDate: "26/12/2538",
+                                religion: "None",
+                                nationality: "Thai",
+                                email: "naikiware@gmail.com",
+                                facebook: "https://www.facebook.com/milkyway",
+                                currentAddress: "39/16 Pahonyothin Rd, Pakpreaw, Muaeng, Saraburi",
+                                phone: "66876628576"
+                            },{
+                                nationalID: "0987654321093",
+                                studentID: "5731111121",
+                                firstName: "Atthraporn",
+                                lastName: "JingjaiDee",
+                                programName: "Bachelor of Engineering, B.Eng. (Computer Engineering)",
+                                status: "Retired",
+                                advisor: "Vishnu Kotrajaras",
+                                gender: "Male",
+                                birthDate: "26/11/2536",
+                                religion: "Buddhist",
+                                nationality: "Thai",
+                                email: "porpor@gmail.com",
+                                facebook: "https://www.facebook.com/por",
+                                currentAddress: "39/16 Pahonyothin Rd, Pakpreaw, Muaeng, Saraburi",
+                                phone: "66872638475"
+                            },{
+                                nationalID: "9911402302095",
+                                studentID: "5730887221",
+                                firstName: "Oraphan",
+                                lastName: "Gamwongwan",
+                                programName: "Bachelor of Engineering, B.Eng. (Computer Engineering)",
+                                status: "Graduated",
+                                advisor: "Vishnu Kotrajaras",
+                                gender: "Male",
+                                birthDate: "26/01/2539",
+                                religion: "Buddhist",
+                                nationality: "Thai",
+                                email: "preaw.preaw@gmail.com",
+                                facebook: "https://www.facebook.com/praew",
+                                currentAddress: "39/16 Pahonyothin Rd, Pakpreaw, Muaeng, Saraburi",
+                                phone: "66873648735"
+                            },{
+                                nationalID: "1101402006095",
+                                studentID: "5731012721",
+                                firstName: "Kosate",
+                                lastName: "Thaweesitthichat",
+                                programName: "Master of Science, M.Sc. (Computer Science)",
+                                status: "On-studying",
+                                advisor: "Vishnu Kotrajaras",
+                                gender: "Male",
+                                birthDate: "26/11/2530",
+                                religion: "Buddhist",
+                                nationality: "Thai",
+                                email: "kosatelim@gmail.com",
+                                facebook: "https://www.facebook.com/neungkl",
+                                currentAddress: "39/16 Pahonyothin Rd, Pakpreaw, Muaeng, Saraburi",
+                                phone: "66840243173"
+                            },{
+                                nationalID: "1101402006095",
+                                studentID: "5731127821",
+                                firstName: "Kanokpon",
+                                lastName: "Donretired",
+                                programName: "Bachelor of Engineering, B.Eng. (Computer Engineering)",
+                                status: "Probation",
+                                advisor: "Vishnu Kotrajaras",
+                                gender: "Male",
+                                birthDate: "23/02/2531",
+                                religion: "Christ",
+                                nationality: "Thai",
+                                email: "pingping@gmail.com",
+                                facebook: "https://www.facebook.com/pingping",
+                                currentAddress: "39/16 Pahonyothin Rd, Pakpreaw, Muaeng, Saraburi",
+                                phone: "66864618275"
+                            },
+                        ], columns: [
+                        {
+                            field: 'state',
+                            checkbox: true,
+                            align: 'center',
+                            valign: 'middle'
+                        }, {
+                            field: 'studentID',
+                            title: 'Student ID',
+                            visible: true
+                        }, {
+                            field: 'courseName',
+                            title: 'Course Name',
+                            visible: true,
+                            editable: {
+                                type: 'text'
+                            }
+                        }, {
+                            field: 'term',
+                            title: 'Term',
+                            visible: true,
+                            editable: {
+                                type: 'text'
+                            }
+                        }, {
+                            field: 'year',
+                            title: 'Year',
+                            visible: true,
+                            editable: {
+                                type: 'text'
+                            }
+                        }, {
+                            field: 'type',
+                            title: 'Type',
+                            visible: true,
+                            editable: {
+                                type: 'text'
+                            }
+                        }, {
+                            field: 'credit',
+                            title: 'Credit',
+                            visible: true,
+                            editable: {
+                                type: 'text'
+                            }
+                        }, {
+                            field: 'grade',
+                            title: 'Grade',
+                            visible: true,
+                            editable: {
+                                type: 'text'
+                            }
+                        }, {
+                            field: 'attendance',
+                            title: 'Attendance',
+                            visible: true,
+                            editable: {
+                                type: 'text'
+                            }
+                        }]
+                    });
+
+                    $table.on('editable-save.bs.table', function (e, field, row, old, $el) {
+                        var $els = $table.find('.editable'),
+                        next = $els.index($el) + 1;
+
+                        if (next >= $els.length) {
+                            return;
+                        }
+
+                        $els.eq(next).editable('show');
+                    });
+
+                } else if (id === "internship") {
+
+                    console.log(id)
+
+                } else if (id === "activity") {
+
+                    console.log(id)
+
+                } else if (id === "achievement") {
+
+                    console.log(id)
+
+                } else if (id === "intermission") {
+
+                    console.log(id)
+
+                } else if (id === "discipline") {
+
+                    console.log(id)
+
+                }
+
+            }
+
+            var selections = [];
+
+            $('table').on('check.bs.table uncheck.bs.table ' +
+                'check-all.bs.table uncheck-all.bs.table', function () {
+                $('#remove').prop('disabled', !$('#table').bootstrapTable('getSelections').length);
+                // save your data, here just save the current page
+                selections = getIdSelections();
+                // push or splice the selections if you want to save all data selections
+            });
+
+            $('#remove').click(function () {
+                var nationalIDs = getIdSelections();
+                $('#table').bootstrapTable('remove', {
+                    field: 'nationalID',
+                    values: nationalIDs
+                });
+                $('#remove').prop('disabled', true);
+            });
+
+            function getIdSelections() {
+                return $.map($('#table').bootstrapTable('getSelections'), function (row) {
+                    return row.nationalID
+                });
+            }
+
+            function detailFormatter(index, row, element) {
+                var html = [];
+                $.each(row, function (key, value) {
+                    html.push('<p><b>' + key + ':</b> ' + value + '</p>');
+                });
+                return html.join('');
+            }
+        </script>
+    </body>
+</html>

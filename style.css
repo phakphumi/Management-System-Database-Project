@@ -7,7 +7,10 @@
   color: #7d1313;
   background-color: #eeeeee;
 }
-a{
+header a{
+  color: #111111;
+}
+header a:hover{
   color: #111111;
 }
 .languageBar .btn-primary{

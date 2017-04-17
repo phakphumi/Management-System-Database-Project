@@ -40,7 +40,7 @@ function setup_numOfStudents() {
                     }
                 }]
             },
-            responsiveAnimationDuration: 1000,
+            // responsiveAnimationDuration: 1000,
         };
         var myBarChart = new Chart($e, {
             responsive: true,

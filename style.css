@@ -1,3 +1,47 @@
+#tabContent{
+    border-radius: 0px;
+}
+.nav-works {
+    padding-left: 25px;
+}
+.nav-works > li {
+    margin: -1px 2px;
+}
+.nav-works > li > a {
+    background-color: #f1f1f1;
+    color: #2b2b2b;
+    border-color: #b5b5b5;
+    border-bottom: 0px;
+}
+.nav-works.nav-tabs > li.active > a{
+    color: #8e1717;
+    border-color: #b5b5b5;
+    border-bottom: 0px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+.nav-works.nav-tabs>li.active>a:hover{
+    box-shadow: 0 0px 0px 0 rgba(0,0,0,0.2);
+}
+.nav-works.nav-tabs>li>a:hover{
+    border-color: #b5b5b5;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+#new-personal .new-personal-input-row {
+
+}
+#new-personal .new-personal-input-row p{
+    color: gray;
+    margin:  0px 2px;
+}
+#new-personal .row.new-personal-input-row > div{
+    padding-left: 10px;
+    padding-right: 0px;
+}
+
+.new-data .modal-dialog {
+    width: 700px;
+}
 
 .nav-pills > li.active > a,.nav-pills > li.active > a:focus {
   color: #8e1717;
@@ -103,12 +147,12 @@ main  >.jumbotron {
 select{
   -webkit-appearance:none;
 }
-div.shadowBox {
+.shadowBox {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     text-align: center;
     transition: 0.3s;
 }
-div.shadowBox:hover {
+.shadowBox:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 .shadowBox a:hover,.shadowBox a:active,.shadowBox a:focus{
@@ -148,6 +192,7 @@ header{
 #wrap{
   min-height: 100%;
   background-color: #e0e0e0;
+  /*background-color: #f4f4f4;*/
 }
 footer{
   background-color:#212121;

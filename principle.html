@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <title>Chula Computer Engineering</title>
+        <!-- Bootstrap core CSS -->
+        <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+        <!-- Custom styles for this template -->
+        <link href="style.css" rel="stylesheet">
+        <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.7/css/bootstrap-dialog.min.css" rel="stylesheet">
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    </head>
+    <body>
+        <div id="wrap">
+            <header></header>
+            <!--# Code Start Here -->
+            <div class="spaceNextNav"></div>
+            <div class="container-fluid">
+                <div class="row conclusion-upperside autoHeight">
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-2">
+                        <div class="shadowBox">
+                            <a class="link" href="#">
+                                <div class="shadowBox-upperside">
+                                    <h2 class="count">35</h2>
+                                    <p class="subscript">Supervisee</p>
+                                </div>
+                                <div class="shadowBox-downside">
+                                    View Details
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-offset-1 col-sm-10">
+                        <div class="shadowBox">
+                            <div class="shadowBox-upperside">
+                                <h4><b>Number of Students</b></h4>
+                                <canvas id="numOfStudents" width="100" height="30"></canvas>
+                                <div style="padding:10px;"></div>
+                            </div>
+                            <a href="#" class="link">
+                                <div class="shadowBox-downside">
+                                    View Details
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row conclusion-downside">
+                    <div class="col-sm-offset-1 col-sm-7">
+                        <div class="shadowBox">
+                            <div class="shadowBox-upperside">
+                                <h4><b>Student Grade</b></h4>
+                                <canvas id="studentGrade" width="700" height="350"></canvas>
+                                <div style="padding:10px;"></div>
+                            </div>
+                            <a href="#" class="link">
+                                <div class="shadowBox-downside">
+                                    View Details
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="shadowBox">
+                            <a href="#" class="link">
+                                <div class="shadowBox-upperside">
+                                    <h4><b>Discipline Score</b></h4>
+                                    <canvas id="disciplineScore" width="100" height="150"></canvas>
+                                </div>
+                                <div class="shadowBox-downside">
+                                    View Details
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="padding:20px;"></div>
+
+            <!-- # Code End Here -->
+        </div>
+        <footer></footer>
+        <!-- Bootstrap core JavaScript
+  ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="assets/js/jquery.min.js"></script>
+        <script>
+            $(function(){
+              $("header").load("assembled.html header",function(){
+                  $('#languageBar').bootstrapToggle()
+              });
+              $("footer").load("assembled.html footer");
+            });
+        </script>
+        <script src="bootstrap/js/bootstrap.min.js"></script>
+        <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.7/js/bootstrap-dialog.min.js"></script>
+        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+        <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.min.js"></script>
+        <script src="js/plugin/Chart.PieceLabel.min.js"></script>
+        <script src="js/principle.js"></script>
+    </body>
+</html>

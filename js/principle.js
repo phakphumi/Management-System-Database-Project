@@ -4,17 +4,27 @@ function setup_numOfStudents() {
         var data = {
             labels: ["Major1", "Major2", "Major3", "Major4", "Major5", "Major6", "Major7", "Major8", "Major9", "Major10"],
             datasets: [{
-              label: "Apples",
+              label: "Freshman",
               backgroundColor: "#F29220",
               borderColor: "#F29220",
               data: [40,20,30,10,10,10,5,10,10,30]
             }, {
-              label: "Bananas",
+              label: "Sophomore ",
               backgroundColor: "#4365B0",
               borderColor: "#4365B0",
               data: [60,80,70,20,30,10,20,10,10,20]
             }, {
-              label: "Cookies",
+              label: "Junior ",
+              backgroundColor: "#F365B0",
+              borderColor: "#F365B0",
+              data: [60,80,70,20,30,10,20,10,10,20]
+            }, {
+              label: "Senior ",
+              backgroundColor: "#03a9f4",
+              borderColor: "#03a9f4",
+              data: [10,5,10,30,10,10,25,10,10,10]
+            }, {
+              label: "Super senior ",
               backgroundColor: "#D00",
               borderColor: "#D00",
               data: [10,5,10,30,10,10,25,10,10,10]
@@ -62,7 +72,7 @@ function setup_studentGrade() {
                     backgroundColor: 'rgba(75,192,192,1.0)',
                     borderColor: 'rgba(75,192,192,1)',
                     borderWidth: 1,
-                    data: [0,0,0,0,5,8,10,7],
+                    data: [10,10,10,10,50,80,100,70],
                 }
             ]
         };
@@ -110,39 +120,62 @@ function setup_studentGrade() {
             options: opt,
         });
     }
-    var implement_chart2 = function() {
-        var data = {
-            labels: ["0.0-0.5", "0.5-1.0", "1.0-1.5", "1.5-2.0", "2.0-2.5","2.5-3.0", "3.0-3.5","3.5-4.0"],
-            datasets: [
-                {
-                    label: " จำนวนนิสิต ",
-                    fill: true,
-                    lineTension: 0.1,
-                    backgroundColor: "rgba(75,192,192,0.4)",
-                    borderColor: "rgba(75,192,192,1)",
-                    borderCapStyle: 'butt',
-                    borderDash: [],
-                    borderDashOffset: 0.0,
-                    borderJoinStyle: 'miter',
-                    pointBorderColor: "rgba(75,192,192,1)",
-                    pointBackgroundColor: "#fff",
-                    pointBorderWidth: 1,
-                    pointHoverRadius: 5,
-                    pointHoverBackgroundColor: "rgba(75,192,192,1)",
-                    pointHoverBorderColor: "rgba(220,220,220,1)",
-                    pointHoverBorderWidth: 2,
-                    pointRadius: 1,
-                    pointHitRadius: 10,
-                    data: [0,0,0,0,5,8,10,7],
-                    spanGaps: false,
-                    // steppedLine:true
+    var implement_link = function() {
+        $e.parents('.shadowBox').find('.link').on('click',function() {
+            BootstrapDialog.show({
+                message: function(){
+                    return $('<div class="row" style="margin:120px 0px;"></div>').append($e.parents('.shadowBox').clone().attr('class','col-sm-offset-4 col-sm-6'));
                 }
-            ]
+            });
+        });
+    }
+
+    implement_chart();
+    implement_link();
+}
+function setup_over4years() {
+    var $e = $("#over4years");
+    var implement_chart = function(){
+        var data = {
+        labels: [
+            "Good",
+            "Fair",
+            "Poor"
+        ],
+        datasets: [
+            {
+                data: [20, 30, 15],
+                backgroundColor: [
+                    "#36A2EB",
+                    "#FFCE56",
+                    "#FF6384",
+                ],
+                hoverBackgroundColor: [
+                    "#35aeff",
+                    "#ffc537",
+                    "#ff496f",
+                ]
+            }]
         };
-        var myLineChart = new Chart($e, {
-            type: 'line',
+        var myDoughnutChart = new Chart($e, {
+            type: 'doughnut',
             data: data,
-            options: {
+            responsive:false,
+            options:  {
+                animation:{
+                    animateScale:true
+                },
+                pieceLabel: {
+                    mode: 'value',
+                    fontSize: 14,
+                    fontStyle: 'bold',
+                    fontColor: '#000',
+                    // arcText: true,
+                    // fontFamily: '"Lucida Console", Monaco, monospace'
+                    format: function (value) {
+                        return value+' คน';
+                    }
+                }
             }
         });
     }
@@ -159,9 +192,8 @@ function setup_studentGrade() {
     implement_chart();
     implement_link();
 }
-
-function setup_disciplineScore() {
-    var $e = $("#disciplineScore");
+function setup_acheivement() {
+    var $e = $("#acheivement");
     var implement_chart = function(){
         var data = {
         labels: [
@@ -223,11 +255,11 @@ function setup_disciplineScore() {
 function setup_Conclusion_bar(){
     var implement_Conclusion_tab = function(i,$e){
         var res = [{
-            count:35,subscript:'Supervisee',link:'#'},{
-            count:2,subscript:'Probation',link:'#'},{
-            count:5,subscript:'On Sick Leave',link:'#'},{
-            count:1,subscript:'Exchange',link:'#'},{
-            count:0,subscript:'Super Senior',link:'#'},{
+            count:10100,subscript:'Supervisee',link:'#'},{
+            count:1111,subscript:'Probation',link:'#'},{
+            count:2222,subscript:'On Sick Leave',link:'#'},{
+            count:3333,subscript:'Exchange',link:'#'},{
+            count:4444,subscript:'Super Senior',link:'#'},{
         }];
         $e.find('.count').html(res[i].count);
         $e.find('.subscript').html(res[i].subscript);
@@ -254,7 +286,8 @@ function setup_Conclusion_bar(){
 
 $(function(){
     setup_Conclusion_bar();
-    setup_disciplineScore();
+    setup_acheivement();
+    setup_over4years();
     setup_studentGrade();
     setup_numOfStudents();
 });

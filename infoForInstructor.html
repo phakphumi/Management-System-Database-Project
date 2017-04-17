@@ -14,8 +14,6 @@
         <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.7/css/bootstrap-dialog.min.css" rel="stylesheet">
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-        <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-        <link rel="icon" href="img/favicon.ico" type="image/x-icon">
     </head>
     <body>
         <div id="wrap">
@@ -33,19 +31,10 @@
                     <li role="presentation"><a data-toggle="tab" id="discipline" href="#disciplineContent" onclick="tabRefresh(this)">Discipline</a></li>
                 </ul>
                 <div id="tabContent" class="jumbotron col-lg-12">
-
+                    
                     <div class="tab-content">
                         <div id="personalContent" class="tab-pane fade in active">
-                            <div id="personalToolbar">
-                                <button id="remove" class="btn btn-danger" disabled>
-                                    <i class="glyphicon glyphicon-remove"></i> Delete
-                                </button>
-                                <button id="add" class="btn btn-primary">
-                                    <i class="glyphicon glyphicon-plus"></i> Add
-                                </button>
-                            </div>
                             <table  id="personalTable"
-                                data-toolbar="#personalToolbar"
                                 data-search="true"
                                 data-show-refresh="true"
                                 data-show-columns="true"
@@ -60,16 +49,7 @@
                             </table>
                         </div>
                         <div id="enrolledContent" class="tab-pane fade">
-                            <div id="enrolledToolbar">
-                                <button id="remove" class="btn btn-danger" disabled>
-                                    <i class="glyphicon glyphicon-remove"></i> Delete
-                                </button>
-                                <button id="add" class="btn btn-primary">
-                                    <i class="glyphicon glyphicon-plus"></i> Add
-                                </button>
-                            </div>
                             <table  id="enrolledTable"
-                                data-toolbar="#enrolledToolbar"
                                 data-search="true"
                                 data-show-refresh="true"
                                 data-show-columns="true"
@@ -84,16 +64,7 @@
                             </table>
                         </div>
                         <div id="internshipContent" class="tab-pane fade">
-                            <div id="internshipToolbar">
-                                <button id="remove" class="btn btn-danger" disabled>
-                                    <i class="glyphicon glyphicon-remove"></i> Delete
-                                </button>
-                                <button id="add" class="btn btn-primary">
-                                    <i class="glyphicon glyphicon-plus"></i> Add
-                                </button>
-                            </div>
                             <table  id="internshipTable"
-                                data-toolbar="#internshipToolbar"
                                 data-search="true"
                                 data-show-refresh="true"
                                 data-show-columns="true"
@@ -108,16 +79,7 @@
                             </table>
                         </div>
                         <div id="activityContent" class="tab-pane fade">
-                            <div id="activityToolbar">
-                                <button id="remove" class="btn btn-danger" disabled>
-                                    <i class="glyphicon glyphicon-remove"></i> Delete
-                                </button>
-                                <button id="add" class="btn btn-primary">
-                                    <i class="glyphicon glyphicon-plus"></i> Add
-                                </button>
-                            </div>
                             <table  id="activityTable"
-                                data-toolbar="#activityToolbar"
                                 data-search="true"
                                 data-show-refresh="true"
                                 data-show-columns="true"
@@ -132,16 +94,7 @@
                             </table>
                         </div>
                         <div id="achievementContent" class="tab-pane fade">
-                            <div id="achievementToolbar">
-                                <button id="remove" class="btn btn-danger" disabled>
-                                    <i class="glyphicon glyphicon-remove"></i> Delete
-                                </button>
-                                <button id="add" class="btn btn-primary">
-                                    <i class="glyphicon glyphicon-plus"></i> Add
-                                </button>
-                            </div>
                             <table  id="achievementTable"
-                                data-toolbar="#achievementToolbar"
                                 data-search="true"
                                 data-show-refresh="true"
                                 data-show-columns="true"
@@ -156,16 +109,7 @@
                             </table>
                         </div>
                         <div id="intermissionContent" class="tab-pane fade">
-                            <div id="intermissionToolbar">
-                                <button id="remove" class="btn btn-danger" disabled>
-                                    <i class="glyphicon glyphicon-remove"></i> Delete
-                                </button>
-                                <button id="add" class="btn btn-primary">
-                                    <i class="glyphicon glyphicon-plus"></i> Add
-                                </button>
-                            </div>
                             <table  id="intermissionTable"
-                                data-toolbar="#intermissionToolbar"
                                 data-search="true"
                                 data-show-refresh="true"
                                 data-show-columns="true"
@@ -180,16 +124,7 @@
                             </table>
                         </div>
                         <div id="disciplineContent" class="tab-pane fade">
-                            <div id="disciplineToolbar">
-                                <button id="remove" class="btn btn-danger" disabled>
-                                    <i class="glyphicon glyphicon-remove"></i> Delete
-                                </button>
-                                <button id="add" class="btn btn-primary">
-                                    <i class="glyphicon glyphicon-plus"></i> Add
-                                </button>
-                            </div>
                             <table  id="disciplineTable"
-                                data-toolbar="#disciplineToolbar"
                                 data-search="true"
                                 data-show-refresh="true"
                                 data-show-columns="true"
@@ -435,7 +370,7 @@
                         checkbox: true,
                         align: 'center',
                         valign: 'middle'
-                    },
+                    },    
                     {
                         field: 'nationalID',
                         title: 'National ID',
@@ -448,93 +383,54 @@
                         field: 'firstName',
                         title: 'First Name',
                         visible: true,
-                        editable: {
-                            type: 'text'
-                        }
                     }, {
                         field: 'lastName',
                         title: 'Last Name',
                         visible: true,
-                        editable: {
-                            type: 'text'
-                        }
                     }, {
                         field: 'programName',
                         title: 'Program Name',
                         visible: true,
-                        editable: {
-                            type: 'text'
-                        }
                     }, {
                         field: 'status',
                         title: 'Status',
                         visible: true,
-                        editable: {
-                            type: 'text'
-                        }
                     }, {
                         field: 'advisor',
                         title: 'Advisor',
                         visible: true,
-                        editable: {
-                            type: 'text'
-                        }
                     }, {
                         field: 'gender',
                         title: 'Gender',
                         visible: false,
-                        editable: {
-                            type: 'text'
-                        }
                     }, {
                         field: 'birthDate',
                         title: 'Birth Date',
                         visible: false,
-                        editable: {
-                            type: 'text'
-                        }
                     }, {
                         field: 'religion',
                         title: 'Religion',
                         visible: false,
-                        editable: {
-                            type: 'text'
-                        }
                     }, {
                         field: 'nationality',
                         title: 'Nationality',
                         visible: false,
-                        editable: {
-                            type: 'text'
-                        }
                     }, {
                         field: 'email',
                         title: 'Email',
                         visible: false,
-                        editable: {
-                            type: 'text'
-                        }
                     }, {
                         field: 'facebook',
                         title: 'Facebook Url',
                         visible: false,
-                        editable: {
-                            type: 'text'
-                        }
                     }, {
                         field: 'currentAddress',
                         title: 'Current Address',
                         visible: false,
-                        editable: {
-                            type: 'textarea'
-                        }
                     }, {
                         field: 'phone',
                         title: 'Phone',
                         visible: true,
-                        editable: {
-                            type: 'text'
-                        }
                     }]
                 });
                 $table.on('editable-save.bs.table', function (e, field, row, old, $el) {
@@ -582,51 +478,31 @@
                             field: 'courseName',
                             title: 'Course Name',
                             visible: true,
-                            editable: {
-                                type: 'text'
-                            }
+                            
                         }, {
                             field: 'term',
                             title: 'Term',
                             visible: true,
-                            editable: {
-                                type: 'text'
-                            }
                         }, {
                             field: 'year',
                             title: 'Year',
                             visible: true,
-                            editable: {
-                                type: 'text'
-                            }
                         }, {
                             field: 'type',
                             title: 'Type',
                             visible: true,
-                            editable: {
-                                type: 'text'
-                            }
                         }, {
                             field: 'credit',
                             title: 'Credit',
                             visible: true,
-                            editable: {
-                                type: 'text'
-                            }
                         }, {
                             field: 'grade',
                             title: 'Grade',
                             visible: true,
-                            editable: {
-                                type: 'text'
-                            }
                         }, {
                             field: 'attendance',
                             title: 'Attendance',
                             visible: true,
-                            editable: {
-                                type: 'text'
-                            }
                         }]
                     });
 
@@ -668,37 +544,22 @@
                             field: 'organizationName',
                             title: 'Organization Name',
                             visible: true,
-                            editable: {
-                                type: 'text'
-                            }
                         }, {
                             field: 'organizationContact',
                             title: 'Organization Contact',
                             visible: true,
-                            editable: {
-                                type: 'text'
-                            }
                         }, {
                             field: 'internYear',
                             title: 'Intern Year',
                             visible: true,
-                            editable: {
-                                type: 'text'
-                            }
                         }, {
                             field: 'startDate',
                             title: 'Start Date',
                             visible: true,
-                            editable: {
-                                type: 'text'
-                            }
                         }, {
                             field: 'endDate',
                             title: 'End Date',
                             visible: true,
-                            editable: {
-                                type: 'text'
-                            }
                         }]
                     });
 
@@ -737,16 +598,10 @@
                             field: 'activityName',
                             title: 'Activity Name',
                             visible: true,
-                            editable: {
-                                type: 'text'
-                            }
                         }, {
                             field: 'belongTo',
                             title: 'Belong To',
                             visible: true,
-                            editable: {
-                                type: 'text'
-                            }
                         }]
                     });
 
@@ -785,16 +640,10 @@
                             field: 'achievementName',
                             title: 'Achievement Name',
                             visible: true,
-                            editable: {
-                                type: 'text'
-                            }
                         }, {
                             field: 'year',
                             title: 'Receive Year',
                             visible: true,
-                            editable: {
-                                type: 'text'
-                            }
                         }]
                     });
 
@@ -834,23 +683,14 @@
                             field: 'intermissionType',
                             title: 'Intermission Type',
                             visible: true,
-                            editable: {
-                                type: 'text'
-                            }
                         }, {
                             field: 'from',
                             title: 'Start',
                             visible: true,
-                            editable: {
-                                type: 'text'
-                            }
                         }, {
                             field: 'to',
                             title: 'End',
                             visible: true,
-                            editable: {
-                                type: 'text'
-                            }
                         }]
                     });
 
@@ -890,23 +730,14 @@
                                 field: 'cause',
                                 title: 'Cause',
                                 visible: true,
-                                editable: {
-                                    type: 'text'
-                                }
                             }, {
                                 field: 'date',
                                 title: 'When',
                                 visible: true,
-                                editable: {
-                                    type: 'text'
-                                }
                             }, {
                                 field: 'score',
                                 title: 'Deduction Score',
                                 visible: true,
-                                editable: {
-                                    type: 'text'
-                                }
                             }]
                         });
 

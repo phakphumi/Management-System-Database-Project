@@ -13,6 +13,7 @@
         <link href="style.css" rel="stylesheet">
         <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.7/css/bootstrap-dialog.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker3.min.css" />
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
         <link rel="icon" href="img/favicon.ico" type="image/x-icon">
@@ -21,9 +22,108 @@
         <div id="wrap">
             <header></header>
             <!--# Code Start Here -->
-            <div style="padding:30px;"></div>
-            <div class="container" id="main">
-                <ul class="nav nav-tabs">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div id="new-personal" class="container-fluid" style="background-color:white;display:none;">
+                        <div class="row">
+                            <div class="row new-personal-input-row">
+                                <div class="col-sm-4">
+                                    <p>Firstname</p>
+                                    <input type="text" class="form-control" name="firstName">
+                                </div>
+                                <div class="col-sm-4">
+                                    <p>Lastname</p>
+                                    <input type="text" class="form-control" name="lastName">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="row new-personal-input-row">
+                                <div class="col-sm-4">
+                                    <p>National ID</p>
+                                    <input type="text" class="form-control" name="nationalID">
+                                </div>
+                                <div class="col-sm-4">
+                                    <p>Student ID</p>
+                                    <input type="text" class="form-control" name="studentID">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="row new-personal-input-row">
+                                <div class="col-sm-3">
+                                    <p>Nationality</p>
+                                    <input type="text" class="form-control" name="nationality">
+                                </div>
+                                <div class="col-sm-3">
+                                    <p>Religion</p>
+                                    <input type="text" class="form-control" name="religion">
+                                </div>
+                                <div class="col-sm-2">
+                                    <br/>
+                                    <select class="form-control" name="gender">
+                                        <option value="" selected="" disabled="">Gender</option>
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-4">
+                                    <p>Birth Date</p>
+                                    <div class="input-group date">
+                                        <input type="text" class="form-control" name="birthDate"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="row new-personal-input-row">
+                                <div class="col-sm-12">
+                                    <p>Street Address</p>
+                                    <input type="text" class="form-control" name="address">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="row new-personal-input-row">
+                                <div class="col-sm-6">
+                                    <p>City</p>
+                                    <input type="text" class="form-control" name="city">
+                                </div>
+                                <div class="col-sm-6">
+                                    <p>State</p>
+                                    <input type="text" class="form-control" name="city">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="row new-personal-input-row">
+                                <div class="col-sm-6">
+                                    <p>Zip Code</p>
+                                    <input type="text" class="form-control" name="zipcode">
+                                </div>
+                                <div class="col-sm-6">
+                                    <br/>
+                                    <select class="form-control" name="province">
+                                        <option value="" selected="" disabled="">Select Province</option>
+                                        <option value="">Bangkok</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="row new-personal-input-row">
+                                <div class="col-sm-3">
+                                    <p>Phone Number</p>
+                                    <input type="text" class="form-control" name="phone">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="padding:10px;"></div>
+            <div class="container-fluid" id="main">
+                <ul class="nav nav-tabs nav-works">
                     <li role="presentation" class="active"><a data-toggle="tab" id="personal" href="#personalContent" onclick="tabRefresh(this)">Personal</a></li>
                     <li role="presentation"><a data-toggle="tab" id="enrolled" href="#enrolledContent" onclick="tabRefresh(this)">Enrolled</a></li>
                     <li role="presentation"><a data-toggle="tab" id="internship" href="#internshipContent" onclick="tabRefresh(this)">Internship</a></li>
@@ -32,7 +132,7 @@
                     <li role="presentation"><a data-toggle="tab" id="intermission" href="#intermissionContent" onclick="tabRefresh(this)">Intermission</a></li>
                     <li role="presentation"><a data-toggle="tab" id="discipline" href="#disciplineContent" onclick="tabRefresh(this)">Discipline</a></li>
                 </ul>
-                <div id="tabContent" class="jumbotron col-lg-12">
+                <div id="tabContent" class="jumbotron col-lg-12 shadowBox">
 
                     <div class="tab-content">
                         <div id="personalContent" class="tab-pane fade in active">
@@ -220,18 +320,55 @@
               $("footer").load("assembled.html footer");
             });
         </script>
+        <script src="bootstrap/js/bootstrap.min.js"></script>
         <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.7/js/bootstrap-dialog.min.js"></script>
         <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
         <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
 
-        <script src="bootstrap/js/bootstrap.min.js"></script>
         <script src="https://rawgit.com/wenzhixin/bootstrap-table/master/src/bootstrap-table.js"></script>
         <script src="https://rawgit.com/vitalets/x-editable/master/dist/bootstrap3-editable/js/bootstrap-editable.js"></script>
         <script src="https://rawgit.com/wenzhixin/bootstrap-table/master/src/extensions/editable/bootstrap-table-editable.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.min.js"></script>
         <script>
+            function implement_datepicker() {
+                $('[name="birthDate"]').parents(".input-group.date").datepicker({
+                    format: "dd/mm/yyyy",
+                    startView: 2
+                });
+            }
+            function setup_addBtn() {
+                $e = $("#new-personal");
+                $("#add").on('click',function() {
+                    BootstrapDialog.show({
+                        title: 'Add New Personal Data',
+                        cssClass: 'new-data',
+                        buttons: [{
+                            label: 'Cancel',
+                            action: function(dialog) {
+                                dialog.close();
+                            }
+                        }, {
+                            label: 'Save Changes',
+                            cssClass: 'btn-primary',
+                            action: function(dialog) {
+                                dialog.setMessage('<h4> Added ! :D </h4>');
+                            }
+                        }],
+                        message: function(){
+                            return $('<div class="row" style="margin:10px 50px;"></div>').append($e.clone().show());
+                        },
+                        onshown : function() {
+                            implement_datepicker();
+                        }
+                    });
+                });
+                implement_datepicker();
+            }
 
             $(function () {
+                setup_addBtn();
+
                 var $table = $('#personalTable').bootstrapTable({
                     idField: 'nationalID',
                     data: [
@@ -559,14 +696,197 @@
                     idField: 'studentID',
                     data: [
                             {
+                                nationalID: "1101402006095",
                                 studentID: "5731087821",
-                                courseName: "Database Design",
-                                term: "2",
-                                year: "2016",
-                                type: "Common Foundation",
-                                credit: "3",
-                                grade: "A",
-                                attendance: "40"
+                                firstName: "Pakpoom",
+                                lastName: "Thaweesitthichat",
+                                programName: "Bachelor of Engineering, B.Eng. (Computer Engineering)",
+                                status: "On-studying",
+                                advisor: "Vishnu Kotrajaras",
+                                gender: "Male",
+                                birthDate: "26/11/2536",
+                                religion: "Buddhist",
+                                nationality: "Thai",
+                                email: "pakpoom.thawee@gmail.com",
+                                facebook: "https://www.facebook.com/phakphumikl",
+                                currentAddress: "39/16 Pahonyothin Rd, Pakpreaw, Muaeng, Saraburi",
+                                phone: "66876678775"
+                            },{
+                                nationalID: "1234567890123",
+                                studentID: "5733027821",
+                                firstName: "Thuchchai",
+                                lastName: "Jiamsorn",
+                                programName: "Bachelor of Engineering, B.Eng. (Computer Engineering)",
+                                status: "Punishment",
+                                advisor: "Vishnu Kotrajaras",
+                                gender: "Male",
+                                birthDate: "26/12/2538",
+                                religion: "None",
+                                nationality: "Thai",
+                                email: "naikiware@gmail.com",
+                                facebook: "https://www.facebook.com/milkyway",
+                                currentAddress: "39/16 Pahonyothin Rd, Pakpreaw, Muaeng, Saraburi",
+                                phone: "66876628576"
+                            },{
+                                nationalID: "0987654321093",
+                                studentID: "5731111121",
+                                firstName: "Atthraporn",
+                                lastName: "JingjaiDee",
+                                programName: "Bachelor of Engineering, B.Eng. (Computer Engineering)",
+                                status: "Retired",
+                                advisor: "Vishnu Kotrajaras",
+                                gender: "Male",
+                                birthDate: "26/11/2536",
+                                religion: "Buddhist",
+                                nationality: "Thai",
+                                email: "porpor@gmail.com",
+                                facebook: "https://www.facebook.com/por",
+                                currentAddress: "39/16 Pahonyothin Rd, Pakpreaw, Muaeng, Saraburi",
+                                phone: "66872638475"
+                            },{
+                                nationalID: "9911402302095",
+                                studentID: "5730887221",
+                                firstName: "Oraphan",
+                                lastName: "Gamwongwan",
+                                programName: "Bachelor of Engineering, B.Eng. (Computer Engineering)",
+                                status: "Graduated",
+                                advisor: "Vishnu Kotrajaras",
+                                gender: "Male",
+                                birthDate: "26/01/2539",
+                                religion: "Buddhist",
+                                nationality: "Thai",
+                                email: "preaw.preaw@gmail.com",
+                                facebook: "https://www.facebook.com/praew",
+                                currentAddress: "39/16 Pahonyothin Rd, Pakpreaw, Muaeng, Saraburi",
+                                phone: "66873648735"
+                            },{
+                                nationalID: "1101402006095",
+                                studentID: "5731012721",
+                                firstName: "Kosate",
+                                lastName: "Thaweesitthichat",
+                                programName: "Master of Science, M.Sc. (Computer Science)",
+                                status: "On-studying",
+                                advisor: "Vishnu Kotrajaras",
+                                gender: "Male",
+                                birthDate: "26/11/2530",
+                                religion: "Buddhist",
+                                nationality: "Thai",
+                                email: "kosatelim@gmail.com",
+                                facebook: "https://www.facebook.com/neungkl",
+                                currentAddress: "39/16 Pahonyothin Rd, Pakpreaw, Muaeng, Saraburi",
+                                phone: "66840243173"
+                            },{
+                                nationalID: "1101402006095",
+                                studentID: "5731127821",
+                                firstName: "Kanokpon",
+                                lastName: "Donretired",
+                                programName: "Bachelor of Engineering, B.Eng. (Computer Engineering)",
+                                status: "Probation",
+                                advisor: "Vishnu Kotrajaras",
+                                gender: "Male",
+                                birthDate: "23/02/2531",
+                                religion: "Christ",
+                                nationality: "Thai",
+                                email: "pingping@gmail.com",
+                                facebook: "https://www.facebook.com/pingping",
+                                currentAddress: "39/16 Pahonyothin Rd, Pakpreaw, Muaeng, Saraburi",
+                                phone: "66864618275"
+                            },{
+                                nationalID: "1101402006095",
+                                studentID: "5731087821",
+                                firstName: "Pakpoom",
+                                lastName: "Thaweesitthichat",
+                                programName: "Bachelor of Engineering, B.Eng. (Computer Engineering)",
+                                status: "On-studying",
+                                advisor: "Vishnu Kotrajaras",
+                                gender: "Male",
+                                birthDate: "26/11/2536",
+                                religion: "Buddhist",
+                                nationality: "Thai",
+                                email: "pakpoom.thawee@gmail.com",
+                                facebook: "https://www.facebook.com/phakphumikl",
+                                currentAddress: "39/16 Pahonyothin Rd, Pakpreaw, Muaeng, Saraburi",
+                                phone: "66876678775"
+                            },{
+                                nationalID: "1234567890123",
+                                studentID: "5733027821",
+                                firstName: "Thuchchai",
+                                lastName: "Jiamsorn",
+                                programName: "Bachelor of Engineering, B.Eng. (Computer Engineering)",
+                                status: "Punishment",
+                                advisor: "Vishnu Kotrajaras",
+                                gender: "Male",
+                                birthDate: "26/12/2538",
+                                religion: "None",
+                                nationality: "Thai",
+                                email: "naikiware@gmail.com",
+                                facebook: "https://www.facebook.com/milkyway",
+                                currentAddress: "39/16 Pahonyothin Rd, Pakpreaw, Muaeng, Saraburi",
+                                phone: "66876628576"
+                            },{
+                                nationalID: "0987654321093",
+                                studentID: "5731111121",
+                                firstName: "Atthraporn",
+                                lastName: "JingjaiDee",
+                                programName: "Bachelor of Engineering, B.Eng. (Computer Engineering)",
+                                status: "Retired",
+                                advisor: "Vishnu Kotrajaras",
+                                gender: "Male",
+                                birthDate: "26/11/2536",
+                                religion: "Buddhist",
+                                nationality: "Thai",
+                                email: "porpor@gmail.com",
+                                facebook: "https://www.facebook.com/por",
+                                currentAddress: "39/16 Pahonyothin Rd, Pakpreaw, Muaeng, Saraburi",
+                                phone: "66872638475"
+                            },{
+                                nationalID: "9911402302095",
+                                studentID: "5730887221",
+                                firstName: "Oraphan",
+                                lastName: "Gamwongwan",
+                                programName: "Bachelor of Engineering, B.Eng. (Computer Engineering)",
+                                status: "Graduated",
+                                advisor: "Vishnu Kotrajaras",
+                                gender: "Male",
+                                birthDate: "26/01/2539",
+                                religion: "Buddhist",
+                                nationality: "Thai",
+                                email: "preaw.preaw@gmail.com",
+                                facebook: "https://www.facebook.com/praew",
+                                currentAddress: "39/16 Pahonyothin Rd, Pakpreaw, Muaeng, Saraburi",
+                                phone: "66873648735"
+                            },{
+                                nationalID: "1101402006095",
+                                studentID: "5731012721",
+                                firstName: "Kosate",
+                                lastName: "Thaweesitthichat",
+                                programName: "Master of Science, M.Sc. (Computer Science)",
+                                status: "On-studying",
+                                advisor: "Vishnu Kotrajaras",
+                                gender: "Male",
+                                birthDate: "26/11/2530",
+                                religion: "Buddhist",
+                                nationality: "Thai",
+                                email: "kosatelim@gmail.com",
+                                facebook: "https://www.facebook.com/neungkl",
+                                currentAddress: "39/16 Pahonyothin Rd, Pakpreaw, Muaeng, Saraburi",
+                                phone: "66840243173"
+                            },{
+                                nationalID: "1101402006095",
+                                studentID: "5731127821",
+                                firstName: "Kanokpon",
+                                lastName: "Donretired",
+                                programName: "Bachelor of Engineering, B.Eng. (Computer Engineering)",
+                                status: "Probation",
+                                advisor: "Vishnu Kotrajaras",
+                                gender: "Male",
+                                birthDate: "23/02/2531",
+                                religion: "Christ",
+                                nationality: "Thai",
+                                email: "pingping@gmail.com",
+                                facebook: "https://www.facebook.com/pingping",
+                                currentAddress: "39/16 Pahonyothin Rd, Pakpreaw, Muaeng, Saraburi",
+                                phone: "66864618275"
                             },
                         ], columns: [
                         {
@@ -643,283 +963,23 @@
 
                 } else if (id === "internship") {
 
-                    var $table = $('#internshipTable').bootstrapTable({
-                    idField: 'studentID',
-                    data: [
-                            {
-                                studentID: "5731087821",
-                                organizationName: "KASIKORN Business Technology Group",
-                                organizationContact: "668243173",
-                                internYear: "2016",
-                                startDate: "01/06/2017",
-                                endDate: "31/07/2017"
-                            },
-                        ], columns: [
-                        {
-                            field: 'state',
-                            checkbox: true,
-                            align: 'center',
-                            valign: 'middle'
-                        }, {
-                            field: 'studentID',
-                            title: 'Student ID',
-                            visible: true
-                        }, {
-                            field: 'organizationName',
-                            title: 'Organization Name',
-                            visible: true,
-                            editable: {
-                                type: 'text'
-                            }
-                        }, {
-                            field: 'organizationContact',
-                            title: 'Organization Contact',
-                            visible: true,
-                            editable: {
-                                type: 'text'
-                            }
-                        }, {
-                            field: 'internYear',
-                            title: 'Intern Year',
-                            visible: true,
-                            editable: {
-                                type: 'text'
-                            }
-                        }, {
-                            field: 'startDate',
-                            title: 'Start Date',
-                            visible: true,
-                            editable: {
-                                type: 'text'
-                            }
-                        }, {
-                            field: 'endDate',
-                            title: 'End Date',
-                            visible: true,
-                            editable: {
-                                type: 'text'
-                            }
-                        }]
-                    });
-
-                    $table.on('editable-save.bs.table', function (e, field, row, old, $el) {
-                        var $els = $table.find('.editable'),
-                        next = $els.index($el) + 1;
-
-                        if (next >= $els.length) {
-                            return;
-                        }
-
-                        $els.eq(next).editable('show');
-                    });
+                    console.log(id)
 
                 } else if (id === "activity") {
 
-                    var $table = $('#activityTable').bootstrapTable({
-                    idField: 'studentID',
-                    data: [
-                            {
-                                studentID: "5731087821",
-                                activityName: "Larngear Camp",
-                                belongTo: "Faculty of Engieerning"
-                            },
-                        ], columns: [
-                        {
-                            field: 'state',
-                            checkbox: true,
-                            align: 'center',
-                            valign: 'middle'
-                        }, {
-                            field: 'studentID',
-                            title: 'Student ID',
-                            visible: true
-                        }, {
-                            field: 'activityName',
-                            title: 'Activity Name',
-                            visible: true,
-                            editable: {
-                                type: 'text'
-                            }
-                        }, {
-                            field: 'belongTo',
-                            title: 'Belong To',
-                            visible: true,
-                            editable: {
-                                type: 'text'
-                            }
-                        }]
-                    });
-
-                    $table.on('editable-save.bs.table', function (e, field, row, old, $el) {
-                        var $els = $table.find('.editable'),
-                        next = $els.index($el) + 1;
-
-                        if (next >= $els.length) {
-                            return;
-                        }
-
-                        $els.eq(next).editable('show');
-                    });
+                    console.log(id)
 
                 } else if (id === "achievement") {
 
-                    var $table = $('#achievementTable').bootstrapTable({
-                    idField: 'studentID',
-                    data: [
-                            {
-                                studentID: "5731087821",
-                                achievementName: "ACM Champion",
-                                year: "2014"
-                            },
-                        ], columns: [
-                        {
-                            field: 'state',
-                            checkbox: true,
-                            align: 'center',
-                            valign: 'middle'
-                        }, {
-                            field: 'studentID',
-                            title: 'Student ID',
-                            visible: true
-                        }, {
-                            field: 'achievementName',
-                            title: 'Achievement Name',
-                            visible: true,
-                            editable: {
-                                type: 'text'
-                            }
-                        }, {
-                            field: 'year',
-                            title: 'Receive Year',
-                            visible: true,
-                            editable: {
-                                type: 'text'
-                            }
-                        }]
-                    });
-
-                    $table.on('editable-save.bs.table', function (e, field, row, old, $el) {
-                        var $els = $table.find('.editable'),
-                        next = $els.index($el) + 1;
-
-                        if (next >= $els.length) {
-                            return;
-                        }
-
-                        $els.eq(next).editable('show');
-                    });
+                    console.log(id)
 
                 } else if (id === "intermission") {
 
-                    var $table = $('#intermissionTable').bootstrapTable({
-                    idField: 'studentID',
-                    data: [
-                            {
-                                studentID: "5731087821",
-                                intermissionType: "Vacation",
-                                from: "01/01/2015",
-                                to: "01/01/2016"
-                            },
-                        ], columns: [
-                        {
-                            field: 'state',
-                            checkbox: true,
-                            align: 'center',
-                            valign: 'middle'
-                        }, {
-                            field: 'studentID',
-                            title: 'Student ID',
-                            visible: true
-                        }, {
-                            field: 'intermissionType',
-                            title: 'Intermission Type',
-                            visible: true,
-                            editable: {
-                                type: 'text'
-                            }
-                        }, {
-                            field: 'from',
-                            title: 'Start',
-                            visible: true,
-                            editable: {
-                                type: 'text'
-                            }
-                        }, {
-                            field: 'to',
-                            title: 'End',
-                            visible: true,
-                            editable: {
-                                type: 'text'
-                            }
-                        }]
-                    });
-
-                    $table.on('editable-save.bs.table', function (e, field, row, old, $el) {
-                        var $els = $table.find('.editable'),
-                        next = $els.index($el) + 1;
-
-                        if (next >= $els.length) {
-                            return;
-                        }
-
-                        $els.eq(next).editable('show');
-                    });
+                    console.log(id)
 
                 } else if (id === "discipline") {
 
-                    var $table = $('#disciplineTable').bootstrapTable({
-                        idField: 'studentID',
-                        data: [
-                                {
-                                    studentID: "5731087821",
-                                    cause: "Uniform Problem",
-                                    date: "01/02/2015",
-                                    score: "-5"
-                                },
-                            ], columns: [
-                            {
-                                field: 'state',
-                                checkbox: true,
-                                align: 'center',
-                                valign: 'middle'
-                            }, {
-                                field: 'studentID',
-                                title: 'Student ID',
-                                visible: true
-                            }, {
-                                field: 'cause',
-                                title: 'Cause',
-                                visible: true,
-                                editable: {
-                                    type: 'text'
-                                }
-                            }, {
-                                field: 'date',
-                                title: 'When',
-                                visible: true,
-                                editable: {
-                                    type: 'text'
-                                }
-                            }, {
-                                field: 'score',
-                                title: 'Deduction Score',
-                                visible: true,
-                                editable: {
-                                    type: 'text'
-                                }
-                            }]
-                        });
-
-                    $table.on('editable-save.bs.table', function (e, field, row, old, $el) {
-                        var $els = $table.find('.editable'),
-                        next = $els.index($el) + 1;
-
-                        if (next >= $els.length) {
-                            return;
-                        }
-
-                        $els.eq(next).editable('show');
-                    });
+                    console.log(id)
 
                 }
 
@@ -927,7 +987,7 @@
 
             var selections = [];
 
-            $('#table').on('check.bs.table uncheck.bs.table ' +
+            $('table').on('check.bs.table uncheck.bs.table ' +
                 'check-all.bs.table uncheck-all.bs.table', function () {
                 $('#remove').prop('disabled', !$('#table').bootstrapTable('getSelections').length);
                 // save your data, here just save the current page

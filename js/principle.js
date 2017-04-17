@@ -39,10 +39,11 @@ function setup_numOfStudents() {
                         beginAtZero: true
                     }
                 }]
-            }
+            },
+            responsiveAnimationDuration: 1000,
         };
         var myBarChart = new Chart($e, {
-            responsive: false,
+            responsive: true,
             type: 'bar',
             data: data,
             options: opt,
@@ -289,5 +290,7 @@ $(function(){
     setup_acheivement();
     setup_over4years();
     setup_studentGrade();
-    setup_numOfStudents();
+    setTimeout(function() {
+        setup_numOfStudents();
+    },1000);
 });

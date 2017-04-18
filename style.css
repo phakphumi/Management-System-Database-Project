@@ -1,3 +1,6 @@
+.tempinfo .modal-dialog {
+    width: 1000px;
+}
 .detail-view{
     text-align: left;
 }

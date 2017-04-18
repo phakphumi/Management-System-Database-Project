@@ -52,8 +52,9 @@ function setup_numOfStudents() {
     var implement_link = function() {
         $e.parents('.shadowBox').find('.link').on('click',function() {
             BootstrapDialog.show({
+                cssClass: 'tempinfo',
                 message: function(){
-                    return $('<div class="row" style="margin:120px 0px;"></div>').append($e.parents('.shadowBox').clone().attr('class','col-sm-offset-4 col-sm-6'));
+                    return $('<div class="row" style="margin:10px 0px;"></div>').append('<div class="col-sm-12"><img style="" class="img-responsive" src="img/info.png"></div>');
                 }
             });
         });

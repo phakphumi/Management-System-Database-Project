@@ -139,22 +139,25 @@ function setup_over4years() {
     var implement_chart = function(){
         var data = {
         labels: [
-            "Good",
-            "Fair",
-            "Poor"
+            "5th Year",
+            "6th Year",
+            "7th Year",
+            "8th Year"
         ],
         datasets: [
             {
-                data: [20, 30, 15],
+                data: [50, 30, 15,10],
                 backgroundColor: [
                     "#36A2EB",
                     "#FFCE56",
                     "#FF6384",
+                    "#DF6384",
                 ],
                 hoverBackgroundColor: [
                     "#35aeff",
                     "#ffc537",
                     "#ff496f",
+                    "#DF4384",
                 ]
             }]
         };
@@ -198,22 +201,25 @@ function setup_acheivement() {
     var implement_chart = function(){
         var data = {
         labels: [
-            "Good",
-            "Fair",
-            "Poor"
+            "1th Year",
+            "2th Year",
+            "3th Year",
+            "4th Year"
         ],
         datasets: [
             {
-                data: [18, 10, 2],
+                data: [20, 30, 40, 55],
                 backgroundColor: [
                     "#36A2EB",
                     "#FFCE56",
                     "#FF6384",
+                    "#DF6384",
                 ],
                 hoverBackgroundColor: [
                     "#35aeff",
                     "#ffc537",
                     "#ff496f",
+                    "#DF4384",
                 ]
             }]
         };
@@ -233,7 +239,7 @@ function setup_acheivement() {
                     // arcText: true,
                     // fontFamily: '"Lucida Console", Monaco, monospace'
                     format: function (value) {
-                        return value+' คน';
+                        return value+' รายการ';
                     }
                 }
             }

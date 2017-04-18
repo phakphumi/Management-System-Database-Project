@@ -1,3 +1,9 @@
+.detail-view{
+    text-align: left;
+}
+.detail-view > td {
+    padding: 40px !important;
+}
 #tabContent{
     border-radius: 0px;
 }

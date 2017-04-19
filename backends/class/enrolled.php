@@ -18,13 +18,13 @@
 
         function getPrincipleTableData() {
 
-            echo "enrolled table";
+            
 
         }
 
         function getPrincipleGraphData() {
 
-            echo "enrolled graph";
+            
 
         }
 

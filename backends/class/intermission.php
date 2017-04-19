@@ -18,13 +18,13 @@
 
         function getPrincipleTableData() {
 
-            echo "intermission table";
+            
 
         }
 
         function getPrincipleGraphData() {
 
-            echo "intermission graph";
+            
 
         }
 

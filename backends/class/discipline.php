@@ -18,13 +18,13 @@
 
         function getPrincipleTableData() {
 
-            echo "discipline table";
+            
 
         }
 
         function getPrincipleGraphData() {
 
-            echo "discipline graph";
+            
 
         }
 

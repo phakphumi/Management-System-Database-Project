@@ -18,13 +18,13 @@
 
         function getPrincipleTableData() {
 
-            echo "activity table";
+            
 
         }
 
         function getPrincipleGraphData() {
 
-            echo "activity graph";
+            
 
         }
 

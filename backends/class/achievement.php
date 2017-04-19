@@ -18,13 +18,13 @@
 
         function getPrincipleTableData() {
 
-            echo "achievement table";
+            
 
         }
 
         function getPrincipleGraphData() {
 
-            echo "achievement graph";
+            
 
         }
 

@@ -18,13 +18,13 @@
 
         function getPrincipleTableData() {
 
-            echo "personal table";
+            
 
         }
 
         function getPrincipleGraphData() {
         
-            echo "personal graph";
+            
 
         }
 

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 21, 2017 at 02:20 AM
+-- Generation Time: Apr 23, 2017 at 06:51 PM
 -- Server version: 5.6.24
 -- PHP Version: 5.5.24
 
@@ -90,14 +90,15 @@ CREATE TABLE IF NOT EXISTS `course` (
   `description` varchar(100) COLLATE utf8_unicode_ci NOT NULL COMMENT 'รายละเอียดวิชา',
   `type` varchar(20) COLLATE utf8_unicode_ci NOT NULL COMMENT 'หมวดวิชา',
   `credit` int(11) NOT NULL COMMENT 'หน่วยกิต'
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `course`
 --
 
 INSERT INTO `course` (`CID`, `name`, `description`, `type`, `credit`) VALUES
-(1, 'DB MGT SYS DESIGN', 'Design Database', 'บังคับ', 3);
+(1, 'DB MGT SYS DESIGN', 'Design Database', 'บังคับ', 3),
+(2, 'SA', 'System Analysis', 'บังคับ', 3);
 
 -- --------------------------------------------------------
 
@@ -139,7 +140,8 @@ CREATE TABLE IF NOT EXISTS `enrolled` (
 --
 
 INSERT INTO `enrolled` (`TID`, `studentID`, `grade`, `attendance`) VALUES
-(2, 57310127, 'A', 40);
+(2, 57310127, 'A', 40),
+(4, 57310878, 'B+', 30);
 
 -- --------------------------------------------------------
 
@@ -158,7 +160,8 @@ CREATE TABLE IF NOT EXISTS `instructor` (
 --
 
 INSERT INTO `instructor` (`nationalID`, `instructorID`, `title`) VALUES
-('1111111111111', 0, 'Prof.');
+('1111111111111', 0, 'Prof.'),
+('9999999999999', 2, 'Prof.');
 
 -- --------------------------------------------------------
 
@@ -211,15 +214,18 @@ CREATE TABLE IF NOT EXISTS `organization` (
   `organID` int(11) NOT NULL COMMENT 'รหัสประจำหน่วยงาน',
   `name` varchar(40) COLLATE utf8_unicode_ci NOT NULL COMMENT 'ชื่อของหน่วยงาน',
   `country` enum('Thai','Upcountry') COLLATE utf8_unicode_ci NOT NULL COMMENT 'ประเทศที่หน่วยงานนั้นตั้งอยู๋',
-  `contact` varchar(100) COLLATE utf8_unicode_ci NOT NULL COMMENT 'เบอร์โทรการติดต่อหรือสถานที่'
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `phone` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `location` varchar(100) COLLATE utf8_unicode_ci NOT NULL COMMENT 'สถานที่',
+  `email` varchar(30) COLLATE utf8_unicode_ci NOT NULL COMMENT 'อีเมล์สำหรับติดต่อบริษัท'
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `organization`
 --
 
-INSERT INTO `organization` (`organID`, `name`, `country`, `contact`) VALUES
-(1, 'Agoda Service', 'Thai', '022222222');
+INSERT INTO `organization` (`organID`, `name`, `country`, `phone`, `location`, `email`) VALUES
+(1, 'Agoda Service', 'Thai', '6622222222', 'Bangkok', 'agoda@agoda.com'),
+(2, 'KBTG', 'Thai', '022222222', 'Bangkok', 'kbtg@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -248,7 +254,9 @@ CREATE TABLE IF NOT EXISTS `personal` (
 INSERT INTO `personal` (`nationalID`, `firstName`, `lastName`, `gender`, `birthDate`, `religion`, `nationality`, `email`, `facebook`, `currentAddress`, `phone`) VALUES
 ('1101402006095', 'Kosate', 'Limpongsa', 'male', '1996-07-18', 'Buddhist', 'Thai', 'kosatelim@gmail.com', 'https://www.facebook.com/neungkl', 'Korat', '0812332486'),
 ('1111111111111', 'Atiwong', 'Suchato', 'male', '1970-11-05', 'Buddhist', 'Thai', 'atiwong@gmail.com', 'https://www.facebook.com/atiwong', 'bangkok', '0888888888'),
-('999999999', 'Wanpen', 'Jaidee', 'female', '2017-04-19', 'Buddhist', 'Thai', 'wanpen@gmail.com', 'https://www.facebook.com/wanpen', 'Bangkok', '0800000000');
+('1234567890123', 'Pakpoom', 'Thaweesitthichat', 'male', '1995-04-23', 'Buddhist', 'Thai', 'pakpoom@gmail.com', 'https://www.facebook.com/pakpoom', 'Saraburi', '0876678776'),
+('999999999', 'Wanpen', 'Jaidee', 'female', '2017-04-19', 'Buddhist', 'Thai', 'wanpen@gmail.com', 'https://www.facebook.com/wanpen', 'Bangkok', '0800000000'),
+('9999999999999', 'Thuchchai', 'Jiamsorn', 'male', '1996-04-24', 'Others', 'Thai', 'naikiawa@gmail.com', 'https://www.facebook.com/milkyway', 'Chiang Mai', '0876678576');
 
 -- --------------------------------------------------------
 
@@ -299,20 +307,19 @@ INSERT INTO `program` (`programID`, `name`, `degree`, `courseLength`, `descripti
 --
 
 CREATE TABLE IF NOT EXISTS `research` (
-  `RID` int(11) NOT NULL,
   `instructorID` int(11) NOT NULL,
   `studentID` int(11) NOT NULL,
   `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL COMMENT 'ชื่อหัวข้อวิจัย',
   `type` enum('comp-eng-project','thesis','dissertation') COLLATE utf8_unicode_ci NOT NULL COMMENT 'ประเภทของวิจัย',
   `field` varchar(100) COLLATE utf8_unicode_ci NOT NULL COMMENT 'เกี่ยวข้องกับสาขาวิชาใด'
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `research`
 --
 
-INSERT INTO `research` (`RID`, `instructorID`, `studentID`, `name`, `type`, `field`) VALUES
-(1, 0, 57310127, 'ระบบตรวจจับลายมือ', 'comp-eng-project', 'Machine Learning, Computer Vision');
+INSERT INTO `research` (`instructorID`, `studentID`, `name`, `type`, `field`) VALUES
+(0, 57310127, 'ระบบตรวจจับลายมือ', 'comp-eng-project', 'Machine Learning, Computer Vision');
 
 -- --------------------------------------------------------
 
@@ -356,7 +363,8 @@ CREATE TABLE IF NOT EXISTS `student` (
 --
 
 INSERT INTO `student` (`nationalID`, `studentID`, `instructorID`, `organID`, `programID`, `start`, `end`, `year`, `status`) VALUES
-('1101402006095', 57310127, 0, 1, 1, '2017-04-01', '2017-04-17', 2017, 'on-studying');
+('1101402006095', 57310127, 0, 1, 1, '2017-04-01', '2017-04-17', 2017, 'on-studying'),
+('1234567890123', 57310878, 2, 2, 1, '2017-04-02', '2017-04-23', 2017, 'on-studying');
 
 -- --------------------------------------------------------
 
@@ -371,7 +379,7 @@ CREATE TABLE IF NOT EXISTS `teach` (
   `section` int(11) NOT NULL,
   `year` int(11) NOT NULL,
   `term` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `teach`
@@ -379,7 +387,8 @@ CREATE TABLE IF NOT EXISTS `teach` (
 
 INSERT INTO `teach` (`TID`, `instructorID`, `CID`, `section`, `year`, `term`) VALUES
 (2, 0, 1, 1, 2016, 2),
-(3, 0, 1, 1, 2017, 2);
+(3, 0, 1, 1, 2017, 2),
+(4, 2, 2, 1, 2017, 1);
 
 --
 -- Indexes for dumped tables
@@ -476,7 +485,6 @@ ALTER TABLE `program`
 -- Indexes for table `research`
 --
 ALTER TABLE `research`
-  ADD PRIMARY KEY (`RID`),
   ADD UNIQUE KEY `instructorID` (`instructorID`,`studentID`),
   ADD KEY `studentID` (`studentID`);
 
@@ -492,10 +500,10 @@ ALTER TABLE `staff`
 ALTER TABLE `student`
   ADD PRIMARY KEY (`nationalID`),
   ADD UNIQUE KEY `studentID` (`studentID`),
-  ADD UNIQUE KEY `organID` (`organID`),
-  ADD UNIQUE KEY `programID` (`programID`),
-  ADD UNIQUE KEY `instructorID` (`instructorID`),
-  ADD UNIQUE KEY `organID_2` (`organID`);
+  ADD UNIQUE KEY `organID_2` (`organID`),
+  ADD UNIQUE KEY `unique_index` (`studentID`,`instructorID`,`organID`,`programID`),
+  ADD KEY `instructorID` (`instructorID`),
+  ADD KEY `programID` (`programID`);
 
 --
 -- Indexes for table `teach`
@@ -523,7 +531,7 @@ ALTER TABLE `activity`
 -- AUTO_INCREMENT for table `course`
 --
 ALTER TABLE `course`
-  MODIFY `CID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'รหัสวิชา',AUTO_INCREMENT=2;
+  MODIFY `CID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'รหัสวิชา',AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `discipline`
 --
@@ -538,22 +546,17 @@ ALTER TABLE `intermission`
 -- AUTO_INCREMENT for table `organization`
 --
 ALTER TABLE `organization`
-  MODIFY `organID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'รหัสประจำหน่วยงาน',AUTO_INCREMENT=2;
+  MODIFY `organID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'รหัสประจำหน่วยงาน',AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `program`
 --
 ALTER TABLE `program`
   MODIFY `programID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT for table `research`
---
-ALTER TABLE `research`
-  MODIFY `RID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
---
 -- AUTO_INCREMENT for table `teach`
 --
 ALTER TABLE `teach`
-  MODIFY `TID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `TID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- Constraints for dumped tables
 --
@@ -562,8 +565,8 @@ ALTER TABLE `teach`
 -- Constraints for table `admission_activity`
 --
 ALTER TABLE `admission_activity`
-  ADD CONSTRAINT `admission_activity_ibfk_1` FOREIGN KEY (`studentID`) REFERENCES `student` (`studentID`) ON DELETE CASCADE ON UPDATE NO ACTION,
-  ADD CONSTRAINT `admission_activity_ibfk_2` FOREIGN KEY (`activityID`) REFERENCES `activity` (`activityID`) ON DELETE CASCADE ON UPDATE NO ACTION;
+  ADD CONSTRAINT `admission_activity_ibfk_2` FOREIGN KEY (`activityID`) REFERENCES `activity` (`activityID`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  ADD CONSTRAINT `admission_activity_ibfk_3` FOREIGN KEY (`studentID`) REFERENCES `student` (`studentID`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `discipline`
@@ -575,8 +578,8 @@ ALTER TABLE `discipline`
 -- Constraints for table `enrolled`
 --
 ALTER TABLE `enrolled`
-  ADD CONSTRAINT `enrolled_ibfk_1` FOREIGN KEY (`studentID`) REFERENCES `student` (`studentID`) ON DELETE CASCADE ON UPDATE NO ACTION,
-  ADD CONSTRAINT `enrolled_ibfk_2` FOREIGN KEY (`TID`) REFERENCES `teach` (`TID`);
+  ADD CONSTRAINT `enrolled_ibfk_2` FOREIGN KEY (`TID`) REFERENCES `teach` (`TID`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  ADD CONSTRAINT `enrolled_ibfk_3` FOREIGN KEY (`studentID`) REFERENCES `student` (`studentID`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `instructor`
@@ -594,8 +597,8 @@ ALTER TABLE `intermission`
 -- Constraints for table `obtain`
 --
 ALTER TABLE `obtain`
-  ADD CONSTRAINT `obtain_ibfk_1` FOREIGN KEY (`studentID`) REFERENCES `student` (`studentID`) ON DELETE CASCADE ON UPDATE NO ACTION,
-  ADD CONSTRAINT `obtain_ibfk_2` FOREIGN KEY (`acmID`) REFERENCES `achievement` (`acmID`) ON DELETE CASCADE ON UPDATE NO ACTION;
+  ADD CONSTRAINT `obtain_ibfk_2` FOREIGN KEY (`acmID`) REFERENCES `achievement` (`acmID`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  ADD CONSTRAINT `obtain_ibfk_3` FOREIGN KEY (`studentID`) REFERENCES `student` (`studentID`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `principle`
@@ -621,10 +624,10 @@ ALTER TABLE `staff`
 -- Constraints for table `student`
 --
 ALTER TABLE `student`
-  ADD CONSTRAINT `student_ibfk_1` FOREIGN KEY (`nationalID`) REFERENCES `personal` (`nationalID`) ON DELETE CASCADE,
-  ADD CONSTRAINT `student_ibfk_2` FOREIGN KEY (`instructorID`) REFERENCES `instructor` (`instructorID`),
-  ADD CONSTRAINT `student_ibfk_3` FOREIGN KEY (`organID`) REFERENCES `organization` (`organID`),
-  ADD CONSTRAINT `student_ibfk_4` FOREIGN KEY (`programID`) REFERENCES `program` (`programID`);
+  ADD CONSTRAINT `student_ibfk_1` FOREIGN KEY (`nationalID`) REFERENCES `personal` (`nationalID`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  ADD CONSTRAINT `student_ibfk_2` FOREIGN KEY (`instructorID`) REFERENCES `instructor` (`instructorID`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  ADD CONSTRAINT `student_ibfk_3` FOREIGN KEY (`programID`) REFERENCES `program` (`programID`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  ADD CONSTRAINT `student_ibfk_4` FOREIGN KEY (`organID`) REFERENCES `organization` (`organID`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `teach`

@@ -1,6 +1,6 @@
 <?php
 
-    class Achievement {
+    class Research {
         
         private $conn;
 
@@ -18,18 +18,16 @@
 
         function getAllTableData() {
 
-            $sql = "SELECT `o`.`studentID`,
+            $sql = "SELECT `r`.`studentID`,
                         concat(`ps`.`firstName`, ' ', `ps`.`lastName`) as studentName,
-                        `a`.`name` as achievementName,
-                        `a`.`year`,
-                        `a`.`description`
-                    FROM `db_mgt_sys_design`.`obtain` o
+                        `r`.`name` as researchTopic,
+                        `r`.`type`,
+                        `r`.`field`
+                    FROM `db_mgt_sys_design`.`research` r
                     INNER JOIN student s
-                        ON s.studentID = o.studentID
+                        ON s.studentID = r.studentID
                     INNER JOIN personal ps
-                        ON ps.nationalID = s.nationalID
-                    INNER JOIN achievement a
-                        ON a.acmID = o.acmID";
+                        ON ps.nationalID = s.nationalID";
 
             $result = $this->conn->query($sql);
 
@@ -57,19 +55,17 @@
 
         function getInstructorTableData($id) {
 
-            $sql = "SELECT `o`.`studentID`,
+            $sql = "SELECT `r`.`studentID`,
                         concat(`ps`.`firstName`, ' ', `ps`.`lastName`) as studentName,
-                        `a`.`name` as achievementName,
-                        `a`.`year`,
-                        `a`.`description`
-                    FROM `db_mgt_sys_design`.`obtain` o
+                        `r`.`name` as researchTopic,
+                        `r`.`type`,
+                        `r`.`field`
+                    FROM `db_mgt_sys_design`.`research` r
                     INNER JOIN student s
-                        ON s.studentID = o.studentID
+                        ON s.studentID = r.studentID
                     INNER JOIN personal ps
                         ON ps.nationalID = s.nationalID
-                    INNER JOIN achievement a
-                        ON a.acmID = o.acmID
-                    WHERE s.instructorID = '$id'";
+                    WHERE r.instructorID = '$id'";
 
             $result = $this->conn->query($sql);
 
@@ -85,7 +81,7 @@
 
                 echo json_encode($api);
 
-            }            
+            }
 
         }
 

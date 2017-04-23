@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <title>Chula Computer Engineering</title>
+        <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/bootstrap-table.min.css">
+        <!--<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.8.0/bootstrap-table.min.css" rel="stylesheet">-->
+        <link rel="stylesheet" href="https://rawgit.com/vitalets/x-editable/master/dist/bootstrap3-editable/css/bootstrap-editable.css">
+        <link href="style.css" rel="stylesheet">
+        <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.7/css/bootstrap-dialog.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker3.min.css" />
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    </head>
+    <body>
+        <div id="wrap">
+            <header></header>
+            <!--# Code Start Here -->
+            <div style="padding:10px;"></div>
+            <div class="container-fluid" id="main">
+                <ul class="nav nav-tabs nav-works">
+                    <li role="presentation" class="active"><a data-toggle="tab" id="personal" href="#personalContent" onclick="tabRefresh(this)">Personal</a></li>
+                    <li role="presentation"><a data-toggle="tab" id="enrolled" href="#enrolledContent" onclick="tabRefresh(this)">Enrolled</a></li>
+                    <li role="presentation"><a data-toggle="tab" id="internship" href="#internshipContent" onclick="tabRefresh(this)">Internship</a></li>
+                    <li role="presentation"><a data-toggle="tab" id="activity" href="#activityContent" onclick="tabRefresh(this)">Activity</a></li>
+                    <li role="presentation"><a data-toggle="tab" id="achievement" href="#achievementContent" onclick="tabRefresh(this)">Achievement</a></li>
+                    <li role="presentation"><a data-toggle="tab" id="intermission" href="#intermissionContent" onclick="tabRefresh(this)">Intermission</a></li>
+                    <li role="presentation"><a data-toggle="tab" id="discipline" href="#disciplineContent" onclick="tabRefresh(this)">Discipline</a></li>
+                    <li role="presentation"><a data-toggle="tab" id="research" href="#researchContent" onclick="tabRefresh(this)">Research</a></li>
+                </ul>
+                <div id="tabContent" class="jumbotron col-lg-12 shadowBox">
+
+                    <div class="tab-content">
+                        <div id="personalContent" class="tab-pane fade in active">
+                            <table  id="personalTable"
+                                data-search="true"
+                                data-show-refresh="true"
+                                data-show-columns="true"
+                                data-show-export="true"
+                                data-detail-view="true"
+                                data-detail-formatter="detailFormatter"
+                                data-minimum-count-columns="2"
+                                data-id-field="id"
+                                data-pagination="true"
+                                data-page-list="[10, 25, 50, 100, ALL]">
+                            </table>
+                        </div>
+                        <div id="enrolledContent" class="tab-pane fade">
+                            <table  id="enrolledTable"
+                                data-search="true"
+                                data-show-refresh="true"
+                                data-show-columns="true"
+                                data-show-export="true"
+                                data-detail-view="true"
+                                data-detail-formatter="detailFormatter"
+                                data-minimum-count-columns="2"
+                                data-id-field="id"
+                                data-pagination="true"
+                                data-page-list="[10, 25, 50, 100, ALL]">
+                            </table>
+                        </div>
+                        <div id="internshipContent" class="tab-pane fade">
+                            <table  id="internshipTable"
+                                data-search="true"
+                                data-show-refresh="true"
+                                data-show-columns="true"
+                                data-show-export="true"
+                                data-detail-view="true"
+                                data-detail-formatter="detailFormatter"
+                                data-minimum-count-columns="2"
+                                data-id-field="id"
+                                data-pagination="true"
+                                data-page-list="[10, 25, 50, 100, ALL]">
+                            </table>
+                        </div>
+                        <div id="activityContent" class="tab-pane fade">
+                            <table  id="activityTable"
+                                data-search="true"
+                                data-show-refresh="true"
+                                data-show-columns="true"
+                                data-show-export="true"
+                                data-detail-view="true"
+                                data-detail-formatter="detailFormatter"
+                                data-minimum-count-columns="2"
+                                data-id-field="id"
+                                data-pagination="true"
+                                data-page-list="[10, 25, 50, 100, ALL]">
+                            </table>
+                        </div>
+                        <div id="achievementContent" class="tab-pane fade">
+                            <table  id="achievementTable"
+                                data-search="true"
+                                data-show-refresh="true"
+                                data-show-columns="true"
+                                data-show-export="true"
+                                data-detail-view="true"
+                                data-detail-formatter="detailFormatter"
+                                data-minimum-count-columns="2"
+                                data-id-field="id"
+                                data-pagination="true"
+                                data-page-list="[10, 25, 50, 100, ALL]">
+                            </table>
+                        </div>
+                        <div id="intermissionContent" class="tab-pane fade">
+                            <table  id="intermissionTable"
+                                data-search="true"
+                                data-show-refresh="true"
+                                data-show-columns="true"
+                                data-show-export="true"
+                                data-detail-view="true"
+                                data-detail-formatter="detailFormatter"
+                                data-minimum-count-columns="2"
+                                data-id-field="id"
+                                data-pagination="true"
+                                data-page-list="[10, 25, 50, 100, ALL]">
+                            </table>
+                        </div>
+                        <div id="disciplineContent" class="tab-pane fade">
+                            <table  id="disciplineTable"
+                                data-search="true"
+                                data-show-refresh="true"
+                                data-show-columns="true"
+                                data-show-export="true"
+                                data-detail-view="true"
+                                data-detail-formatter="detailFormatter"
+                                data-minimum-count-columns="2"
+                                data-id-field="id"
+                                data-pagination="true"
+                                data-page-list="[10, 25, 50, 100, ALL]">
+                            </table>
+                        </div>
+                        <div id="researchContent" class="tab-pane fade">
+                            <table  id="researchTable"
+                                data-search="true"
+                                data-show-refresh="true"
+                                data-show-columns="true"
+                                data-show-export="true"
+                                data-detail-view="true"
+                                data-detail-formatter="detailFormatter"
+                                data-minimum-count-columns="2"
+                                data-id-field="id"
+                                data-pagination="true"
+                                data-page-list="[10, 25, 50, 100, ALL]">
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="padding:30px;"></div>
+            <!-- # Code End Here -->
+        </div>
+        <footer></footer>
+
+        <script src="assets/js/jquery.min.js"></script>
+        <script>
+            $(function(){
+              $("header").load("assembled.html header",function(){
+                  $('#languageBar').bootstrapToggle()
+              });
+              $("footer").load("assembled.html footer");
+            });
+        </script>
+        <script src="bootstrap/js/bootstrap.min.js"></script>
+        <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.7/js/bootstrap-dialog.min.js"></script>
+        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+        <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
+
+        <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.8.0/bootstrap-table.min.js"></script>-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/bootstrap-table.min.js"></script>
+        <script src="https://rawgit.com/vitalets/x-editable/master/dist/bootstrap3-editable/js/bootstrap-editable.js"></script>
+        <script src="https://rawgit.com/wenzhixin/bootstrap-table/master/src/extensions/editable/bootstrap-table-editable.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.min.js"></script>
+        <script>
+            function implement_datepicker() {
+                $('[name="birthDate"]').parents(".input-group.date").datepicker({
+                    format: "dd/mm/yyyy",
+                    startView: 2
+                });
+            }
+            function setup_addBtn() {
+                $e = $("#new-personal");
+                $("#add").on('click',function() {
+                    BootstrapDialog.show({
+                        title: 'Add New Personal Data',
+                        cssClass: 'new-data',
+                        buttons: [{
+                            label: 'Cancel',
+                            action: function(dialog) {
+                                dialog.close();
+                            }
+                        }, {
+                            label: 'Save Changes',
+                            cssClass: 'btn-primary',
+                            action: function(dialog) {
+                                dialog.setMessage('<h4> Added ! :D </h4>');
+                            }
+                        }],
+                        message: function(){
+                            return $('<div class="row" style="margin:10px 50px;"></div>').append($e.clone().show());
+                        },
+                        onshown : function() {
+                            implement_datepicker();
+                        }
+                    });
+                });
+                implement_datepicker();
+            }
+
+            $(function () {
+                setup_addBtn();
+                var $table = $('#personalTable').bootstrapTable({
+
+                    idField: 'nationalID',
+                    url: './backends/output.php',
+                    method: 'GET',
+                    queryParams: function(params) {
+
+                                        params['type'] = 'personal';
+                                        params['view'] = 'table';
+
+                                        return params;
+
+                                    },
+                    columns: [
+                    {
+                        field: 'state',
+                        checkbox: true,
+                        align: 'center',
+                        valign: 'middle'
+                    },
+                    {
+                        field: 'nationalID',
+                        title: 'National ID',
+                        visible: true,
+                    }, {
+                        field: 'studentID',
+                        title: 'Student ID',
+                        visible: true
+                    }, {
+                        field: 'firstName',
+                        title: 'First Name',
+                        visible: true
+                    }, {
+                        field: 'lastName',
+                        title: 'Last Name',
+                        visible: true
+                    }, {
+                        field: 'programName',
+                        title: 'Program Name',
+                        visible: true
+                    }, {
+                        field: 'status',
+                        title: 'Status',
+                        visible: true
+                    }, {
+                        field: 'advisor',
+                        title: 'Advisor',
+                        visible: true
+                    }, {
+                        field: 'gender',
+                        title: 'Gender',
+                        visible: false
+                    }, {
+                        field: 'birthDate',
+                        title: 'Birth Date',
+                        visible: false
+                    }, {
+                        field: 'religion',
+                        title: 'Religion',
+                        visible: false
+                    }, {
+                        field: 'nationality',
+                        title: 'Nationality',
+                        visible: false
+                    }, {
+                        field: 'email',
+                        title: 'Email',
+                        visible: false
+                    }, {
+                        field: 'facebook',
+                        title: 'Facebook Url',
+                        visible: false
+                    }, {
+                        field: 'currentAddress',
+                        title: 'Current Address',
+                        visible: false
+                    }, {
+                        field: 'phone',
+                        title: 'Phone',
+                        visible: true
+                    }]
+                });
+                $table.on('editable-save.bs.table', function (e, field, row, old, $el) {
+                        var $els = $table.find('.editable'),
+                        next = $els.index($el) + 1;
+
+                        if (next >= $els.length) {
+                            return;
+                        }
+
+                        $els.eq(next).editable('show');
+                });
+            });
+
+            function tabRefresh(itemElement) {
+
+                var id = itemElement.id;
+
+                if (id === "enrolled") {
+
+                    var $table = $('#enrolledTable').bootstrapTable({
+                    idField: 'studentID',
+                    url: './backends/output.php',
+                    method: 'GET',
+                    queryParams: function(params) {
+
+                                        params['type'] = 'enrolled';
+                                        params['view'] = 'table';
+
+                                        return params;
+
+                                    },
+                    columns: [
+                                {
+                                    field: 'state',
+                                    checkbox: true,
+                                    align: 'center',
+                                    valign: 'middle'
+                                }, {
+                                    field: 'studentID',
+                                    title: 'Student ID',
+                                    visible: true
+                                }, {
+                                    field: 'studentName',
+                                    title: 'Student Name',
+                                    visible: true
+                                }, {
+                                    field: 'courseName',
+                                    title: 'Course Name',
+                                    visible: true
+                                }, {
+                                    field: 'term',
+                                    title: 'Term',
+                                    visible: true
+                                }, {
+                                    field: 'year',
+                                    title: 'Year',
+                                    visible: true
+                                }, {
+                                    field: 'type',
+                                    title: 'Type',
+                                    visible: true
+                                }, {
+                                    field: 'credit',
+                                    title: 'Credit',
+                                    visible: true
+                                }, {
+                                    field: 'grade',
+                                    title: 'Grade',
+                                    visible: true
+                                }, {
+                                    field: 'attendance',
+                                    title: 'Attendance',
+                                    visible: true
+                                }, {
+                                    field: 'section',
+                                    title: 'Section',
+                                    visible: false
+                                }, {
+                                    field: 'instructorName',
+                                    title: 'Instructor Name',
+                                    visible: false
+                                }
+                            ]
+                    });
+
+                    $table.on('editable-save.bs.table', function (e, field, row, old, $el) {
+                        var $els = $table.find('.editable'),
+                        next = $els.index($el) + 1;
+
+                        if (next >= $els.length) {
+                            return;
+                        }
+
+                        $els.eq(next).editable('show');
+                    });
+
+                } else if (id === "internship") {
+
+                    var $table = $('#internshipTable').bootstrapTable({
+                    idField: 'studentID',
+                    url: './backends/output.php',
+                    method: 'GET',
+                    queryParams: function(params) {
+
+                                        params['type'] = 'internship';
+                                        params['view'] = 'table';
+
+                                        return params;
+
+                                    },
+                    columns: [
+                                {
+                                    field: 'state',
+                                    checkbox: true,
+                                    align: 'center',
+                                    valign: 'middle'
+                                }, {
+                                    field: 'studentID',
+                                    title: 'Student ID',
+                                    visible: true
+                                }, {
+                                    field: 'studentName',
+                                    title: 'Student Name',
+                                    visible: true
+                                }, {
+                                    field: 'organizationName',
+                                    title: 'Company Name',
+                                    visible: true
+                                }, {
+                                    field: 'start',
+                                    title: 'Start',
+                                    visible: true
+                                }, {
+                                    field: 'end',
+                                    title: 'End',
+                                    visible: true
+                                }, {
+                                    field: 'year',
+                                    title: 'Year',
+                                    visible: true
+                                }, {
+                                    field: 'country',
+                                    title: 'Country',
+                                    visible: false
+                                }, {
+                                    field: 'phone',
+                                    title: 'Phone',
+                                    visible: false
+                                }, {
+                                    field: 'location',
+                                    title: 'Location',
+                                    visible: false
+                                }, {
+                                    field: 'email',
+                                    title: 'Email',
+                                    visible: false
+                                }
+                            ]
+                    });
+
+                    $table.on('editable-save.bs.table', function (e, field, row, old, $el) {
+                        var $els = $table.find('.editable'),
+                        next = $els.index($el) + 1;
+
+                        if (next >= $els.length) {
+                            return;
+                        }
+
+                        $els.eq(next).editable('show');
+                    });
+
+                } else if (id === "activity") {
+
+                    var $table = $('#activityTable').bootstrapTable({
+                    idField: 'studentID',
+                    url: './backends/output.php',
+                    method: 'GET',
+                    queryParams: function(params) {
+
+                                        params['type'] = 'activity';
+                                        params['view'] = 'table';
+
+                                        return params;
+
+                                    },
+                    columns: [
+                        {
+                            field: 'state',
+                            checkbox: true,
+                            align: 'center',
+                            valign: 'middle'
+                        }, {
+                            field: 'studentID',
+                            title: 'Student ID',
+                            visible: true
+                        }, {
+                            field: 'studentName',
+                            title: 'Student Name',
+                            visible: true
+                        }, {
+                            field: 'activityName',
+                            title: 'Activity Name',
+                            visible: true
+                        }, {
+                            field: 'belongTo',
+                            title: 'Belong To',
+                            visible: true
+                        }]
+                    });
+
+                    $table.on('editable-save.bs.table', function (e, field, row, old, $el) {
+                        var $els = $table.find('.editable'),
+                        next = $els.index($el) + 1;
+
+                        if (next >= $els.length) {
+                            return;
+                        }
+
+                        $els.eq(next).editable('show');
+                    });
+
+                } else if (id === "achievement") {
+
+                    var $table = $('#achievementTable').bootstrapTable({
+                    idField: 'studentID',
+                    url: './backends/output.php',
+                    method: 'GET',
+                    queryParams: function(params) {
+
+                                        params['type'] = 'achievement';
+                                        params['view'] = 'table';
+
+                                        return params;
+
+                                    },
+                    columns: [
+                        {
+                            field: 'state',
+                            checkbox: true,
+                            align: 'center',
+                            valign: 'middle'
+                        }, {
+                            field: 'studentID',
+                            title: 'Student ID',
+                            visible: true
+                        }, {
+                            field: 'studentName',
+                            title: 'Student Name',
+                            visible: true
+                        }, {
+                            field: 'achievementName',
+                            title: 'Achievement Name',
+                            visible: true
+                        }, {
+                            field: 'year',
+                            title: 'Receive Year',
+                            visible: true
+                        }, {
+                            field: 'description',
+                            title: 'Description',
+                            visible: false
+                        }]
+                    });
+
+                    $table.on('editable-save.bs.table', function (e, field, row, old, $el) {
+                        var $els = $table.find('.editable'),
+                        next = $els.index($el) + 1;
+
+                        if (next >= $els.length) {
+                            return;
+                        }
+
+                        $els.eq(next).editable('show');
+                    });
+
+                } else if (id === "intermission") {
+
+                    var $table = $('#intermissionTable').bootstrapTable({
+                    idField: 'studentID',
+                    url: './backends/output.php',
+                    method: 'GET',
+                    queryParams: function(params) {
+
+                                        params['type'] = 'intermission';
+                                        params['view'] = 'table';
+
+                                        return params;
+
+                                    },
+                    columns: [
+                        {
+                            field: 'state',
+                            checkbox: true,
+                            align: 'center',
+                            valign: 'middle'
+                        }, {
+                            field: 'studentID',
+                            title: 'Student ID',
+                            visible: true
+                        }, {
+                            field: 'studentName',
+                            title: 'Student Name',
+                            visible: true
+                        }, {
+                            field: 'type',
+                            title: 'Intermission Type',
+                            visible: true
+                        }, {
+                            field: 'begin',
+                            title: 'Start',
+                            visible: true
+                        }, {
+                            field: 'end',
+                            title: 'End',
+                            visible: true
+                        }, {
+                            field: 'note',
+                            title: 'Note',
+                            visible: false
+                        }, ]
+                    });
+
+                    $table.on('editable-save.bs.table', function (e, field, row, old, $el) {
+                        var $els = $table.find('.editable'),
+                        next = $els.index($el) + 1;
+
+                        if (next >= $els.length) {
+                            return;
+                        }
+
+                        $els.eq(next).editable('show');
+                    });
+
+                } else if (id === "discipline") {
+
+                    var $table = $('#disciplineTable').bootstrapTable({
+                        idField: 'studentID',
+                        url: './backends/output.php',
+                        method: 'GET',
+                        queryParams: function(params) {
+
+                                            params['type'] = 'discipline';
+                                            params['view'] = 'table';
+
+                                            return params;
+
+                                        },
+                        columns: [
+                            {
+                                field: 'state',
+                                checkbox: true,
+                                align: 'center',
+                                valign: 'middle'
+                            }, {
+                                field: 'studentID',
+                                title: 'Student ID',
+                                visible: true
+                            }, {
+                                field: 'studentName',
+                                title: 'Student Name',
+                                visible: true
+                            }, {
+                                field: 'cause',
+                                title: 'Cause',
+                                visible: true
+                            }, {
+                                field: 'date',
+                                title: 'When',
+                                visible: true
+                            }, {
+                                field: 'score',
+                                title: 'Deduction Score',
+                                visible: true
+                            }]
+                        });
+
+                    $table.on('editable-save.bs.table', function (e, field, row, old, $el) {
+                        var $els = $table.find('.editable'),
+                        next = $els.index($el) + 1;
+
+                        if (next >= $els.length) {
+                            return;
+                        }
+
+                        $els.eq(next).editable('show');
+                    });
+
+                } else if (id === "research") {
+
+                    var $table = $('#researchTable').bootstrapTable({
+                        idField: 'studentID',
+                        url: './backends/output.php',
+                        method: 'GET',
+                        queryParams: function(params) {
+
+                                            params['type'] = 'research';
+                                            params['view'] = 'table';
+
+                                            return params;
+
+                                        },
+                        columns: [
+                            {
+                                field: 'state',
+                                checkbox: true,
+                                align: 'center',
+                                valign: 'middle'
+                            }, {
+                                field: 'studentID',
+                                title: 'Student ID',
+                                visible: true
+                            }, {
+                                field: 'studentName',
+                                title: 'Student Name',
+                                visible: true
+                            }, {
+                                field: 'researchTopic',
+                                title: 'Research Topic',
+                                visible: true
+                            }, {
+                                field: 'type',
+                                title: 'Type',
+                                visible: true
+                            }, {
+                                field: 'field',
+                                title: 'Field',
+                                visible: true
+                            }]
+                        });
+
+                    $table.on('editable-save.bs.table', function (e, field, row, old, $el) {
+                        var $els = $table.find('.editable'),
+                        next = $els.index($el) + 1;
+
+                        if (next >= $els.length) {
+                            return;
+                        }
+
+                        $els.eq(next).editable('show');
+                    });
+
+                }
+
+            }
+
+            var selections = [];
+
+            $('#personalTable').on('check.bs.table uncheck.bs.table ' +
+                'check-all.bs.table uncheck-all.bs.table', function () {
+                $('#personalRemove').prop('disabled', !$('#personalTable').bootstrapTable('getSelections').length);
+                // save your data, here just save the current page
+                selections = getIdSelections();
+                // push or splice the selections if you want to save all data selections
+            });
+
+            $('#personalRemove').click(function () {
+                var nationalIDs = getIdSelections();
+                $('#personalTable').bootstrapTable('remove', {
+                    field: 'nationalID',
+                    values: nationalIDs
+                });
+                $('#personalRemove').prop('disabled', true);
+                selections = null;
+            });
+
+            function getIdSelections() {
+                return $.map($('#personalTable').bootstrapTable('getSelections'), function (row) {
+                    return row.nationalID
+                });
+            }
+
+            function detailFormatter(index, row, element) {
+                var html = [];
+                $.each(row, function (key, value) {
+                    html.push('<p><b>' + key + ':</b> ' + value + '</p>');
+                });
+                return html.join('');
+            }
+            // data: [
+                    //         {
+                    //             nationalID: "1101402006095",
+                    //             studentID: "5731087821",
+                    //             firstName: "Pakpoom",
+                    //             lastName: "Thaweesitthichat",
+                    //             programName: "Bachelor of Engineering, B.Eng. (Computer Engineering)",
+                    //             status: "On-studying",
+                    //             advisor: "Vishnu Kotrajaras",
+                    //             gender: "Male",
+                    //             birthDate: "26/11/2536",
+                    //             religion: "Buddhist",
+                    //             nationality: "Thai",
+                    //             email: "pakpoom.thawee@gmail.com",
+                    //             facebook: "https://www.facebook.com/phakphumikl",
+                    //             currentAddress: "39/16 Pahonyothin Rd, Pakpreaw, Muaeng, Saraburi",
+                    //             phone: "66876678775"
+                    //         },{
+                    //             nationalID: "1234567890123",
+                    //             studentID: "5733027821",
+                    //             firstName: "Thuchchai",
+                    //             lastName: "Jiamsorn",
+                    //             programName: "Bachelor of Engineering, B.Eng. (Computer Engineering)",
+                    //             status: "Punishment",
+                    //             advisor: "Vishnu Kotrajaras",
+                    //             gender: "Male",
+                    //             birthDate: "26/12/2538",
+                    //             religion: "None",
+                    //             nationality: "Thai",
+                    //             email: "naikiware@gmail.com",
+                    //             facebook: "https://www.facebook.com/milkyway",
+                    //             currentAddress: "39/16 Pahonyothin Rd, Pakpreaw, Muaeng, Saraburi",
+                    //             phone: "66876628576"
+                    //         },{
+                    //             nationalID: "0987654321093",
+                    //             studentID: "5731111121",
+                    //             firstName: "Atthraporn",
+                    //             lastName: "JingjaiDee",
+                    //             programName: "Bachelor of Engineering, B.Eng. (Computer Engineering)",
+                    //             status: "Retired",
+                    //             advisor: "Vishnu Kotrajaras",
+                    //             gender: "Male",
+                    //             birthDate: "26/11/2536",
+                    //             religion: "Buddhist",
+                    //             nationality: "Thai",
+                    //             email: "porpor@gmail.com",
+                    //             facebook: "https://www.facebook.com/por",
+                    //             currentAddress: "39/16 Pahonyothin Rd, Pakpreaw, Muaeng, Saraburi",
+                    //             phone: "66872638475"
+                    //         },{
+                    //             nationalID: "9911402302095",
+                    //             studentID: "5730887221",
+                    //             firstName: "Oraphan",
+                    //             lastName: "Gamwongwan",
+                    //             programName: "Bachelor of Engineering, B.Eng. (Computer Engineering)",
+                    //             status: "Graduated",
+                    //             advisor: "Vishnu Kotrajaras",
+                    //             gender: "Male",
+                    //             birthDate: "26/01/2539",
+                    //             religion: "Buddhist",
+                    //             nationality: "Thai",
+                    //             email: "preaw.preaw@gmail.com",
+                    //             facebook: "https://www.facebook.com/praew",
+                    //             currentAddress: "39/16 Pahonyothin Rd, Pakpreaw, Muaeng, Saraburi",
+                    //             phone: "66873648735"
+                    //         },{
+                    //             nationalID: "1101402205095",
+                    //             studentID: "5731012721",
+                    //             firstName: "Kosate",
+                    //             lastName: "Thaweesitthichat",
+                    //             programName: "Master of Science, M.Sc. (Computer Science)",
+                    //             status: "On-studying",
+                    //             advisor: "Vishnu Kotrajaras",
+                    //             gender: "Male",
+                    //             birthDate: "26/11/2530",
+                    //             religion: "Buddhist",
+                    //             nationality: "Thai",
+                    //             email: "kosatelim@gmail.com",
+                    //             facebook: "https://www.facebook.com/neungkl",
+                    //             currentAddress: "39/16 Pahonyothin Rd, Pakpreaw, Muaeng, Saraburi",
+                    //             phone: "66840243173"
+                    //         },{
+                    //             nationalID: "1101443006095",
+                    //             studentID: "5731127821",
+                    //             firstName: "Kanokpon",
+                    //             lastName: "Donretired",
+                    //             programName: "Bachelor of Engineering, B.Eng. (Computer Engineering)",
+                    //             status: "Probation",
+                    //             advisor: "Vishnu Kotrajaras",
+                    //             gender: "Male",
+                    //             birthDate: "23/02/2531",
+                    //             religion: "Christ",
+                    //             nationality: "Thai",
+                    //             email: "pingping@gmail.com",
+                    //             facebook: "https://www.facebook.com/pingping",
+                    //             currentAddress: "39/16 Pahonyothin Rd, Pakpreaw, Muaeng, Saraburi",
+                    //             phone: "66864618275"
+                    //         },{
+                    //             nationalID: "1101402001005",
+                    //             studentID: "5731087821",
+                    //             firstName: "Pakpoom",
+                    //             lastName: "Thaweesitthichat",
+                    //             programName: "Bachelor of Engineering, B.Eng. (Computer Engineering)",
+                    //             status: "On-studying",
+                    //             advisor: "Vishnu Kotrajaras",
+                    //             gender: "Male",
+                    //             birthDate: "26/11/2536",
+                    //             religion: "Buddhist",
+                    //             nationality: "Thai",
+                    //             email: "pakpoom.thawee@gmail.com",
+                    //             facebook: "https://www.facebook.com/phakphumikl",
+                    //             currentAddress: "39/16 Pahonyothin Rd, Pakpreaw, Muaeng, Saraburi",
+                    //             phone: "66876678775"
+                    //         },{
+                    //             nationalID: "1234563890123",
+                    //             studentID: "5733027821",
+                    //             firstName: "Thuchchai",
+                    //             lastName: "Jiamsorn",
+                    //             programName: "Bachelor of Engineering, B.Eng. (Computer Engineering)",
+                    //             status: "Punishment",
+                    //             advisor: "Vishnu Kotrajaras",
+                    //             gender: "Male",
+                    //             birthDate: "26/12/2538",
+                    //             religion: "None",
+                    //             nationality: "Thai",
+                    //             email: "naikiware@gmail.com",
+                    //             facebook: "https://www.facebook.com/milkyway",
+                    //             currentAddress: "39/16 Pahonyothin Rd, Pakpreaw, Muaeng, Saraburi",
+                    //             phone: "66876628576"
+                    //         },{
+                    //             nationalID: "0987354321093",
+                    //             studentID: "5731111121",
+                    //             firstName: "Atthraporn",
+                    //             lastName: "JingjaiDee",
+                    //             programName: "Bachelor of Engineering, B.Eng. (Computer Engineering)",
+                    //             status: "Retired",
+                    //             advisor: "Vishnu Kotrajaras",
+                    //             gender: "Male",
+                    //             birthDate: "26/11/2536",
+                    //             religion: "Buddhist",
+                    //             nationality: "Thai",
+                    //             email: "porpor@gmail.com",
+                    //             facebook: "https://www.facebook.com/por",
+                    //             currentAddress: "39/16 Pahonyothin Rd, Pakpreaw, Muaeng, Saraburi",
+                    //             phone: "66872638475"
+                    //         },{
+                    //             nationalID: "9911402302095",
+                    //             studentID: "5730887221",
+                    //             firstName: "Oraphan",
+                    //             lastName: "Gamwongwan",
+                    //             programName: "Bachelor of Engineering, B.Eng. (Computer Engineering)",
+                    //             status: "Graduated",
+                    //             advisor: "Vishnu Kotrajaras",
+                    //             gender: "Male",
+                    //             birthDate: "26/01/2539",
+                    //             religion: "Buddhist",
+                    //             nationality: "Thai",
+                    //             email: "preaw.preaw@gmail.com",
+                    //             facebook: "https://www.facebook.com/praew",
+                    //             currentAddress: "39/16 Pahonyothin Rd, Pakpreaw, Muaeng, Saraburi",
+                    //             phone: "66873648735"
+                    //         },{
+                    //             nationalID: "1101509006095",
+                    //             studentID: "5731012721",
+                    //             firstName: "Kosate",
+                    //             lastName: "Thaweesitthichat",
+                    //             programName: "Master of Science, M.Sc. (Computer Science)",
+                    //             status: "On-studying",
+                    //             advisor: "Vishnu Kotrajaras",
+                    //             gender: "Male",
+                    //             birthDate: "26/11/2530",
+                    //             religion: "Buddhist",
+                    //             nationality: "Thai",
+                    //             email: "kosatelim@gmail.com",
+                    //             facebook: "https://www.facebook.com/neungkl",
+                    //             currentAddress: "39/16 Pahonyothin Rd, Pakpreaw, Muaeng, Saraburi",
+                    //             phone: "66840243173"
+                    //         },{
+                    //             nationalID: "1101401036095",
+                    //             studentID: "5731127821",
+                    //             firstName: "Kanokpon",
+                    //             lastName: "Donretired",
+                    //             programName: "Bachelor of Engineering, B.Eng. (Computer Engineering)",
+                    //             status: "Probation",
+                    //             advisor: "Vishnu Kotrajaras",
+                    //             gender: "Male",
+                    //             birthDate: "23/02/2531",
+                    //             religion: "Christ",
+                    //             nationality: "Thai",
+                    //             email: "pingping@gmail.com",
+                    //             facebook: "https://www.facebook.com/pingping",
+                    //             currentAddress: "39/16 Pahonyothin Rd, Pakpreaw, Muaeng, Saraburi",
+                    //             phone: "66864618275"
+                    //         },
+                    //     ],
+        </script>
+    </body>
+</html>

@@ -8,6 +8,7 @@
     require('./class/intermission.php');
     require('./class/internship.php');
     require('./class/personal.php');
+    require('./class/research.php');
 
     $achievement = new Achievement($conn);
     $activity = new Activity($conn);
@@ -16,10 +17,13 @@
     $intermission = new Intermission($conn);
     $internship = new Internship($conn);
     $personal = new Personal($conn);
+    $research = new Research($conn);
 
-    if(isset($_SESSION["user_type"]) && isset($_GET["view"]) && isset($_GET["type"])) {
+    if(isset($_SESSION["user_type"]) && isset($_SESSION["id"]) && isset($_GET["view"]) && isset($_GET["type"])) {
+    // if(isset($_GET["view"]) && isset($_GET["type"])) {
 
         if($_SESSION["user_type"] === "principle") {
+        // if(true) {
 
             if($_GET["view"] === "table") {
 
@@ -28,49 +32,56 @@
                     case 'personal':
 
                         # code...for enrolled table view as principle
-                        $personal->getPrincipleTableData();
+                        $personal->getAllTableData();
 
                         break;
                     
                     case 'enrolled':
 
                         # code...for enrolled table view as principle
-                        $enrolled->getPrincipleTableData();
+                        $enrolled->getAllTableData();
 
                         break;
 
                     case 'internship':
 
-                        # code...for internship table view as principle
-                        $internship->getPrincipleTableData();
+                        # code...for enrolled table view as principle
+                        $internship->getAllTableData();
 
                         break;
 
                     case 'activity':
 
                         # code...for activity table view as principle
-                        $activity->getPrincipleTableData();
+                        $activity->getAllTableData();
 
                         break;
 
                     case 'achievement':
 
                         # code...for achievement table view as principle
-                        $achievement->getPrincipleTableData();
+                        $achievement->getAllTableData();
 
                         break;
 
                     case 'intermission':
 
                         # code...for intermission table view as principle
-                        $intermission->getPrincipleTableData();
+                        $intermission->getAllTableData();
 
                         break;
 
                     case 'discipline':
 
                         # code...for discipline table view as principle
-                        $discipline->getPrincipleTableData();
+                        $discipline->getAllTableData();
+
+                        break;
+
+                    case 'research':
+
+                        # code...for discipline table view as principle
+                        $research->getAllTableData();
 
                         break;
 
@@ -129,6 +140,13 @@
 
                         break;
 
+                    case 'research':
+
+                        # code...for discipline graph view as principle
+                        $research->getPrincipleGraphData();
+
+                        break;
+
                 }
 
             }
@@ -142,49 +160,56 @@
                     case 'personal':
 
                         # code...for enrolled table view as instructor
-                        $personal->getInstructorTableData();
+                        $personal->getInstructorTableData($_SESSION["id"]);
 
                         break;
                     
                     case 'enrolled':
 
                         # code...for enrolled table view as instructor
-                        $enrolled->getInstructorTableData();
+                        $enrolled->getInstructorTableData($_SESSION["id"]);
 
                         break;
 
                     case 'internship':
 
-                        # code...for internship table view as instructor
-                        $internship->getInstructorTableData();
+                        # code...for enrolled table view as principle
+                        $internship->getInstructorTableData($_SESSION["id"]);
 
                         break;
 
                     case 'activity':
 
                         # code...for activity table view as instructor
-                        $internship->getInstructorTableData();
+                        $activity->getInstructorTableData($_SESSION["id"]);
 
                         break;
 
                     case 'achievement':
 
                         # code...for achievement table view as instructor
-                        $achievement->getInstructorTableData();
+                        $achievement->getInstructorTableData($_SESSION["id"]);
 
                         break;
 
                     case 'intermission':
 
                         # code...for intermission table view as instructor
-                        $intermission->getInstructorTableData();
+                        $intermission->getInstructorTableData($_SESSION["id"]);
 
                         break;
 
                     case 'discipline':
 
                         # code...for discipline table view as instructor
-                        $discipline->getInstructorTableData();
+                        $discipline->getInstructorTableData($_SESSION["id"]);
+
+                        break;
+
+                    case 'research':
+
+                        # code...for discipline table view as instructor
+                        $research->getInstructorTableData($_SESSION["id"]);
 
                         break;
 
@@ -243,6 +268,13 @@
 
                         break;
 
+                    case 'research':
+
+                        # code...for discipline graph view as instructor
+                        $research->getInstructorGraphData();
+
+                        break;
+
                 }
 
             }
@@ -254,49 +286,56 @@
                 case 'personal':
 
                     # code...for enrolled table view as staff
-                    $personal->getStaffTableData();
+                    $personal->getAllTableData();
 
                     break;
                 
                 case 'enrolled':
 
                     # code...for enrolled table view as staff
-                    $enrolled->getStaffTableData();
+                    $enrolled->getAllTableData();
 
                     break;
 
                 case 'internship':
 
-                    # code...for internship table view as staff
-                    $internship->getStaffTableData();
+                    # code...for enrolled table view as staff
+                    $internship->getAllTableData();
 
                     break;
 
                 case 'activity':
 
                     # code...for activity table view as staff
-                    $activity->getStaffTableData();
+                    $activity->getAllTableData();
 
                     break;
 
                 case 'achievement':
 
                     # code...for achievement table view as staff
-                    $achievement->getStaffTableData();
+                    $achievement->getAllTableData();
 
                     break;
 
                 case 'intermission':
 
                     # code...for intermission table view as staff
-                    $intermission->getStaffTableData();
+                    $intermission->getAllTableData();
 
                     break;
 
                 case 'discipline':
 
                     # code...for discipline table view as staff
-                    $discipline->getStaffTableData();
+                    $discipline->getAllTableData();
+
+                    break;
+
+                case 'research':
+
+                    # code...for discipline table view as staff
+                    $research->getAllTableData();
 
                     break;
 

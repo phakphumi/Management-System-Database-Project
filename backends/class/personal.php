@@ -10,9 +10,96 @@
 
         }
 
-        function addData() {
+        function addData($nationalID,
+                        $firstName,
+                        $lastName,
+                        $gender,
+                        $birthDate,
+                        $religion,
+                        $nationality,
+                        $email,
+                        $facebook,
+                        $currentAddress,
+                        $phone,
+                        $studentID,
+                        $instructorID,
+                        $programID,
+                        $status) 
+        {
 
+            $sql = "INSERT INTO `db_mgt_sys_design`.`personal`
+                                (`nationalID`,
+                                `firstName`,
+                                `lastName`,
+                                `gender`,
+                                `birthDate`,
+                                `religion`,
+                                `nationality`,
+                                `email`,
+                                `facebook`,
+                                `currentAddress`,
+                                `phone`)
+                                VALUES
+                                ('$nationalID',
+                                '$firstName',
+                                '$lastName',
+                                '$gender',
+                                '$birthDate',
+                                '$religion',
+                                '$nationality',
+                                '$email',
+                                '$facebook',
+                                '$currentAddress',
+                                '$phone');";
 
+            $sql .= "INSERT INTO `db_mgt_sys_design`.`student`
+                                (`nationalID`,
+                                `studentID`,
+                                `instructorID`,
+                                `organID`,
+                                `programID`,
+                                `start`,
+                                `end`,
+                                `year`,
+                                `status`)
+                                VALUES
+                                ('$nationalID',
+                                '$studentID',
+                                '$instructorID',
+                                '2',
+                                '$programID',
+                                '2016-01-01',
+                                '2016-02-01',
+                                '2017',
+                                '$status')";
+
+            if($this->conn->multi_query($sql) === TRUE) {
+
+                echo "New records created successfully";
+
+            } else {
+
+                echo "Error: " . $sql . "<br>" . $conn->error;
+                        
+            }
+
+        }
+
+        function deleteData($nationalID) {
+
+            $sql = "DELETE FROM `db_mgt_sys_design`.`personal`
+                    WHERE nationalID = '$nationalID'";
+echo $sql;
+
+            if($this->conn->query($sql) === TRUE) {
+
+                echo "Delete records successfully";
+
+            } else {
+
+                echo "Error: " . $sql . "<br>" . $conn->error;
+                        
+            }
 
         }
 

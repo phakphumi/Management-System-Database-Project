@@ -28,23 +28,11 @@
                     <div id="new-personal" class="container-fluid" style="background-color:white;display:none;">
                         <div class="row">
                             <div class="row new-personal-input-row">
-                                <div class="col-sm-4">
-                                    <p>Firstname</p>
-                                    <input type="text" class="form-control" name="firstName">
-                                </div>
-                                <div class="col-sm-4">
-                                    <p>Lastname</p>
-                                    <input type="text" class="form-control" name="lastName">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="row new-personal-input-row">
-                                <div class="col-sm-4">
+                                <div class="col-sm-6">
                                     <p>National ID</p>
                                     <input type="text" class="form-control" name="nationalID">
                                 </div>
-                                <div class="col-sm-4">
+                                <div class="col-sm-6">
                                     <p>Student ID</p>
                                     <input type="text" class="form-control" name="studentID">
                                 </div>
@@ -52,70 +40,111 @@
                         </div>
                         <div class="row">
                             <div class="row new-personal-input-row">
-                                <div class="col-sm-3">
-                                    <p>Nationality</p>
-                                    <input type="text" class="form-control" name="nationality">
+                                <div class="col-sm-6">
+                                    <p>Firstname</p>
+                                    <input type="text" class="form-control" name="firstName">
                                 </div>
-                                <div class="col-sm-3">
-                                    <p>Religion</p>
-                                    <input type="text" class="form-control" name="religion">
+                                <div class="col-sm-6">
+                                    <p>Lastname</p>
+                                    <input type="text" class="form-control" name="lastName">
                                 </div>
-                                <div class="col-sm-2">
-                                    <br/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="row new-personal-input-row">
+                                <div class="col-sm-6">
+                                    <p>Gender</p>
                                     <select class="form-control" name="gender">
-                                        <option value="" selected="" disabled="">Gender</option>
                                         <option value="male">Male</option>
                                         <option value="female">Female</option>
                                     </select>
                                 </div>
-                                <div class="col-sm-4">
+                                <div class="col-sm-6">
                                     <p>Birth Date</p>
-                                    <div class="input-group date">
-                                        <input type="text" class="form-control" name="birthDate"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
-                                    </div>
+                                    <input type="text" class="form-control" name="birthDate" placeholder="eg. 1996-07-18">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="row new-personal-input-row">
+                                <div class="col-sm-6">
+                                    <p>Nationality</p>
+                                    <select class="form-control" name="nationality">
+                                        <option value="Thai">Thai</option>
+                                        <option value="Foreign">Foreign</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-6">
+                                    <p>Religion</p>
+                                    <select class="form-control" name="religion">
+                                        <option value="Buddhist">Buddhist</option>
+                                        <option value="Christ">Christ</option>
+                                        <option value="Islam">Islam</option>
+                                        <option value="Others">Others</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="row new-personal-input-row">
+                                <div class="col-sm-6">
+                                    <p>Program</p>
+                                    <select class="form-control" name="programName">
+                                        <option value="1">B.Eng. (Computer Engineering)</option>
+                                        <option value="2">M.Eng. (Computer Engineering)</option>
+                                        <option value="3">M.Sc. (Computer Science)</option>
+                                        <option value="4">M.Sc. (Software Engineering)</option>
+                                        <option value="5">Ph.D. (Computer Engineering)</option>
+
+                                    </select>
+                                </div>
+                                <div class="col-sm-6">
+                                    <p>Status</p>
+                                    <select class="form-control" name="status">
+                                        <option value="on-studying">On-Studying</option>
+                                        <option value="prohibition">Prohibition</option>
+                                        <option value="retired">Retired</option>
+                                        <option value="graduated">Grduated</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="row new-personal-input-row">
                                 <div class="col-sm-12">
-                                    <p>Street Address</p>
-                                    <input type="text" class="form-control" name="address">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="row new-personal-input-row">
-                                <div class="col-sm-6">
-                                    <p>City</p>
-                                    <input type="text" class="form-control" name="city">
-                                </div>
-                                <div class="col-sm-6">
-                                    <p>State</p>
-                                    <input type="text" class="form-control" name="city">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="row new-personal-input-row">
-                                <div class="col-sm-6">
-                                    <p>Zip Code</p>
-                                    <input type="text" class="form-control" name="zipcode">
-                                </div>
-                                <div class="col-sm-6">
-                                    <br/>
-                                    <select class="form-control" name="province">
-                                        <option value="" selected="" disabled="">Select Province</option>
-                                        <option value="">Bangkok</option>
+                                    <p>Advisor</p>
+                                    <select class="form-control" name="advisor">
+                                        <option value="0">Atiwong Suchato</option>
+                                        <option value="2">Thuchchai Jiamsorn</option>
                                     </select>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="row new-personal-input-row">
-                                <div class="col-sm-3">
-                                    <p>Phone Number</p>
+                                <div class="col-sm-6">
+                                    <p>Email</p>
+                                    <input type="text" class="form-control" name="email">
+                                </div>
+                                <div class="col-sm-6">
+                                    <p>Phone</p>
                                     <input type="text" class="form-control" name="phone">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="row new-personal-input-row">
+                                <div class="col-sm-12">
+                                    <p>Facebook Url</p>
+                                    <input type="text" class="form-control" name="facebook">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="row new-personal-input-row">
+                                <div class="col-sm-12">
+                                    <p>Current Address</p>
+                                    <input type="text" class="form-control" name="currentAddress">
                                 </div>
                             </div>
                         </div>
@@ -359,6 +388,7 @@
             function setup_addBtn() {
                 $e = $("#new-personal");
                 $("#add").on('click',function() {
+
                     BootstrapDialog.show({
                         title: 'Add New Personal Data',
                         cssClass: 'new-data',
@@ -371,11 +401,52 @@
                             label: 'Save Changes',
                             cssClass: 'btn-primary',
                             action: function(dialog) {
-                                dialog.setMessage('<h4> Added ! :D </h4>');
+
+                                var nationalID = $('.register [name="nationalID"]').val();
+                                var studentID = $('.register [name="studentID"]').val();
+                                var firstName = $('.register [name="firstName"]').val();
+                                var lastName = $('.register [name="lastName"]').val();
+                                var gender = $('.register [name="gender"]').val();
+                                var birthDate = $('.register [name="birthDate"]').val();
+                                var nationality = $('.register [name="nationality"]').val();
+                                var religion = $('.register [name="religion"]').val();
+                                var programID = $('.register [name="programName"]').val();
+                                var status = $('.register [name="status"]').val();
+                                var instructorID = $('.register [name="advisor"]').val();
+                                var email = $('.register [name="email"]').val();
+                                var phone = $('.register [name="phone"]').val();
+                                var facebook = $('.register [name="facebook"]').val();
+                                var currentAddress = $('.register [name="currentAddress"]').val();
+
+                                $.post("./backends/modify.php",
+                                    {
+                                        type: 'addPersonal',
+                                        nationalID: nationalID,
+                                        studentID: studentID,
+                                        firstName: firstName,
+                                        lastName: lastName,
+                                        gender: gender,
+                                        birthDate: birthDate,
+                                        nationality: nationality,
+                                        religion: religion,
+                                        programID: programID,
+                                        status: status,
+                                        instructorID: instructorID,
+                                        email: email,
+                                        phone: phone,
+                                        facebook: facebook,
+                                        currentAddress: currentAddress
+                                    },
+                                    function(data, status){
+                                        console.log("Add personal response \nData: " + data + "\nStatus: " + status);
+                                });
+                                
+                                dialog.close();
+                                
                             }
                         }],
                         message: function(){
-                            return $('<div class="row" style="margin:10px 50px;"></div>').append($e.clone().show());
+                            return $('<div class="row register" style="margin:10px 50px;"></div>').append($e.clone().show());
                         },
                         onshown : function() {
                             implement_datepicker();
@@ -1042,6 +1113,20 @@
 
             $('#personalRemove').click(function () {
                 var nationalIDs = getIdSelections();
+
+                nationalIDs.forEach(function(nationalID) {
+                    
+                    $.post("./backends/modify.php",
+                        {
+                            type: 'deletePersonal',
+                            nationalID: nationalID,
+                        },
+                        function(data, status){
+                            console.log("Delete personal response \nData: " + data + "\nStatus: " + status);
+                    });
+
+                }, this);
+
                 $('#personalTable').bootstrapTable('remove', {
                     field: 'nationalID',
                     values: nationalIDs

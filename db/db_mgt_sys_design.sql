@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 29, 2017 at 04:04 PM
+-- Generation Time: Apr 29, 2017 at 10:49 PM
 -- Server version: 5.6.24
 -- PHP Version: 5.5.24
 
@@ -436,7 +436,8 @@ ALTER TABLE `discipline`
 --
 ALTER TABLE `enrolled`
   ADD PRIMARY KEY (`TID`),
-  ADD UNIQUE KEY `studentID` (`studentID`);
+  ADD UNIQUE KEY `unique_index` (`TID`,`studentID`),
+  ADD KEY `studentID` (`studentID`);
 
 --
 -- Indexes for table `instructor`

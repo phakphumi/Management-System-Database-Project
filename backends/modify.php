@@ -49,6 +49,14 @@
                 case 'deletePersonal':
 
                     $personal->deleteData($_POST["nationalID"]);
+
+                    break;
+
+                case 'editPersonal':
+
+                    $personal->editData($_POST["nationalID"], $_POST["field"], $_POST["value"]);
+
+                    break;
                 
                 case 'enrolled':
 

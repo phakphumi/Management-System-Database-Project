@@ -3,10 +3,48 @@
     class Personal {
         
         private $conn;
+        private $mappingTable;
+        private $personalField;
+        private $studentField;
 
         function __construct($conn) {
 
             $this->conn = $conn;
+            $personalField = array("nationalID", "firstName", "lastName", "gender", "birthDate", "religion", "nationality", "email", "facebook", "currentAddress", "phone");
+            $studentField = array("studentID", "instructorID", "programID", "status");
+            
+            foreach ($personalField as &$field) {
+                
+                $this->mappingTable[$field] = "personal";
+
+            }
+
+            foreach ($studentField as &$field) {
+                
+                $this->mappingTable[$field] = "student";
+
+            }
+
+        }
+
+        function editData($id, $field, $value) {
+
+            $tableName = $this->mappingTable[$field];
+            
+            $sql = "UPDATE `db_mgt_sys_design`.`$tableName`
+                    SET
+                    `$field` = '$value'
+                    WHERE `nationalID` = '$id'";
+            
+            if($this->conn->query($sql) === TRUE) {
+
+                echo "Edit records successfully";
+
+            } else {
+
+                echo "Error: " . $sql . "<br>" . $conn->error;
+                        
+            }
 
         }
 
@@ -89,7 +127,6 @@
 
             $sql = "DELETE FROM `db_mgt_sys_design`.`personal`
                     WHERE nationalID = '$nationalID'";
-echo $sql;
 
             if($this->conn->query($sql) === TRUE) {
 

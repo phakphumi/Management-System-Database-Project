@@ -504,9 +504,6 @@
                         field: 'programName',
                         title: 'Program Name',
                         visible: true,
-                        editable: {
-                            type: 'text'
-                        }
                     }, {
                         field: 'status',
                         title: 'Status',
@@ -518,9 +515,6 @@
                         field: 'advisor',
                         title: 'Advisor',
                         visible: true,
-                        editable: {
-                            type: 'text'
-                        }
                     }, {
                         field: 'gender',
                         title: 'Gender',
@@ -580,14 +574,25 @@
                     }]
                 });
                 $table.on('editable-save.bs.table', function (e, field, row, old, $el) {
-                        var $els = $table.find('.editable'),
-                        next = $els.index($el) + 1;
+                        // var $els = $table.find('.editable'),
+                        // next = $els.index($el) + 1;
+                        // if (next >= $els.length) {
+                        //     return;
+                        // }
 
-                        if (next >= $els.length) {
-                            return;
-                        }
+                        // $els.eq(next).editable('show');
 
-                        $els.eq(next).editable('show');
+                        $.post("./backends/modify.php",
+                        {
+                            type: 'editPersonal',
+                            nationalID: row["nationalID"],
+                            field: field,
+                            value: row[field]
+                        },
+                        function(data, status){
+                            console.log("Edit personal response \nData: " + data + "\nStatus: " + status);
+                    });
+
                 });
             });
 

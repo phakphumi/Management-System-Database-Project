@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 23, 2017 at 06:51 PM
+-- Generation Time: Apr 29, 2017 at 04:04 PM
 -- Server version: 5.6.24
 -- PHP Version: 5.5.24
 
@@ -252,7 +252,7 @@ CREATE TABLE IF NOT EXISTS `personal` (
 --
 
 INSERT INTO `personal` (`nationalID`, `firstName`, `lastName`, `gender`, `birthDate`, `religion`, `nationality`, `email`, `facebook`, `currentAddress`, `phone`) VALUES
-('1101402006095', 'Kosate', 'Limpongsa', 'male', '1996-07-18', 'Buddhist', 'Thai', 'kosatelim@gmail.com', 'https://www.facebook.com/neungkl', 'Korat', '0812332486'),
+('1101402006095', 'Kosate', 'Limpongsa', 'female', '1996-07-18', 'Buddhist', 'Thai', 'kosatelim@gmail.com', 'https://www.facebook.com/neungkl', 'Korat', '0812332486'),
 ('1111111111111', 'Atiwong', 'Suchato', 'male', '1970-11-05', 'Buddhist', 'Thai', 'atiwong@gmail.com', 'https://www.facebook.com/atiwong', 'bangkok', '0888888888'),
 ('1234567890123', 'Pakpoom', 'Thaweesitthichat', 'male', '1995-04-23', 'Buddhist', 'Thai', 'pakpoom@gmail.com', 'https://www.facebook.com/pakpoom', 'Saraburi', '0876678776'),
 ('999999999', 'Wanpen', 'Jaidee', 'female', '2017-04-19', 'Buddhist', 'Thai', 'wanpen@gmail.com', 'https://www.facebook.com/wanpen', 'Bangkok', '0800000000'),
@@ -291,14 +291,18 @@ CREATE TABLE IF NOT EXISTS `program` (
   `description` varchar(500) COLLATE utf8_unicode_ci NOT NULL COMMENT 'คำอธิบายของหลักสูตร',
   `established` date NOT NULL COMMENT 'วันที่ร่างหลักสูตร',
   `firstUsed` date NOT NULL COMMENT 'วันที่หลักสูตรถูกใช้ครั้งแรก'
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `program`
 --
 
 INSERT INTO `program` (`programID`, `name`, `degree`, `courseLength`, `description`, `established`, `firstUsed`) VALUES
-(1, 'Computer Engineering', 'Bachelor', 4, 'เรียนเกี่ยวกับวิศวฯคอม เพื่อเป็นวิศวฯคอม', '2017-04-01', '2017-04-02');
+(1, 'Computer Engineering', 'Bachelor', 4, 'เรียนเกี่ยวกับวิศวฯคอม เพื่อเป็นวิศวฯคอม', '2017-04-01', '2017-04-02'),
+(2, 'Computer Engineering', 'Master', 2, 'ปริญญาโทวิศวกรรมคอมพิวเตอร์', '2017-04-02', '2017-04-01'),
+(3, 'Computer Science', 'Master', 2, 'ปริญญาโทวิทยาศาสตร์คอมพิวเตอร์', '2017-04-01', '2017-04-01'),
+(4, 'Software Engineering', 'Master', 2, 'ปริญญาโทวิศวกรรมซอฟต์แวร์', '2017-04-01', '2017-04-30'),
+(5, 'Computer Engineering', 'Doctor', 3, 'ปริญญาเอกวิศวกรรมคอมพิวเตอร์', '2017-04-30', '2017-04-30');
 
 -- --------------------------------------------------------
 
@@ -349,13 +353,13 @@ INSERT INTO `staff` (`nationalID`, `staffID`, `section`) VALUES
 CREATE TABLE IF NOT EXISTS `student` (
   `nationalID` varchar(13) COLLATE utf8_unicode_ci NOT NULL,
   `studentID` int(11) NOT NULL,
-  `instructorID` int(11) NOT NULL COMMENT 'advisor',
-  `organID` int(11) NOT NULL COMMENT 'internship company1',
-  `programID` int(11) NOT NULL COMMENT 'study program',
-  `start` date NOT NULL COMMENT 'intern start date',
-  `end` date NOT NULL COMMENT 'intern end date',
-  `year` int(11) NOT NULL COMMENT 'intern year',
-  `status` enum('on-studying','prohibition','retired','graduated','intermission-leave') COLLATE utf8_unicode_ci NOT NULL COMMENT 'student status'
+  `instructorID` int(11) NOT NULL,
+  `organID` int(11) NOT NULL,
+  `programID` int(11) NOT NULL,
+  `start` date NOT NULL,
+  `end` date NOT NULL,
+  `year` int(11) NOT NULL,
+  `status` enum('on-studying','prohibition','retired','graduated','intermission-leave') COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -363,8 +367,8 @@ CREATE TABLE IF NOT EXISTS `student` (
 --
 
 INSERT INTO `student` (`nationalID`, `studentID`, `instructorID`, `organID`, `programID`, `start`, `end`, `year`, `status`) VALUES
-('1101402006095', 57310127, 0, 1, 1, '2017-04-01', '2017-04-17', 2017, 'on-studying'),
-('1234567890123', 57310878, 2, 2, 1, '2017-04-02', '2017-04-23', 2017, 'on-studying');
+('1101402006095', 57310127, 0, 1, 1, '2017-04-01', '2017-04-30', 2017, 'on-studying'),
+('1234567890123', 57310878, 2, 2, 1, '2017-04-02', '2017-04-30', 2017, 'on-studying');
 
 -- --------------------------------------------------------
 
@@ -447,7 +451,7 @@ ALTER TABLE `instructor`
 ALTER TABLE `intermission`
   ADD PRIMARY KEY (`intermID`),
   ADD UNIQUE KEY `intermID` (`intermID`,`studentID`),
-  ADD KEY `studentID` (`studentID`);
+  ADD KEY `intermission_ibfk_1` (`studentID`);
 
 --
 -- Indexes for table `obtain`
@@ -499,10 +503,9 @@ ALTER TABLE `staff`
 --
 ALTER TABLE `student`
   ADD PRIMARY KEY (`nationalID`),
-  ADD UNIQUE KEY `studentID` (`studentID`),
-  ADD UNIQUE KEY `organID_2` (`organID`),
-  ADD UNIQUE KEY `unique_index` (`studentID`,`instructorID`,`organID`,`programID`),
+  ADD UNIQUE KEY `studentID` (`studentID`,`instructorID`,`organID`,`programID`),
   ADD KEY `instructorID` (`instructorID`),
+  ADD KEY `organID` (`organID`),
   ADD KEY `programID` (`programID`);
 
 --
@@ -551,7 +554,7 @@ ALTER TABLE `organization`
 -- AUTO_INCREMENT for table `program`
 --
 ALTER TABLE `program`
-  MODIFY `programID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `programID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `teach`
 --
@@ -625,9 +628,9 @@ ALTER TABLE `staff`
 --
 ALTER TABLE `student`
   ADD CONSTRAINT `student_ibfk_1` FOREIGN KEY (`nationalID`) REFERENCES `personal` (`nationalID`) ON DELETE CASCADE ON UPDATE NO ACTION,
-  ADD CONSTRAINT `student_ibfk_2` FOREIGN KEY (`instructorID`) REFERENCES `instructor` (`instructorID`) ON DELETE CASCADE ON UPDATE NO ACTION,
-  ADD CONSTRAINT `student_ibfk_3` FOREIGN KEY (`programID`) REFERENCES `program` (`programID`) ON DELETE CASCADE ON UPDATE NO ACTION,
-  ADD CONSTRAINT `student_ibfk_4` FOREIGN KEY (`organID`) REFERENCES `organization` (`organID`) ON DELETE CASCADE ON UPDATE NO ACTION;
+  ADD CONSTRAINT `student_ibfk_2` FOREIGN KEY (`instructorID`) REFERENCES `instructor` (`instructorID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `student_ibfk_3` FOREIGN KEY (`organID`) REFERENCES `organization` (`organID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `student_ibfk_4` FOREIGN KEY (`programID`) REFERENCES `program` (`programID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `teach`

@@ -299,8 +299,8 @@ function setup_Conclusion_bar(){
         implement_Conclusion_tab(i,$thisCol);
     }
 }
-function setup_login() {
-    return $.post('backends/login.php',{id:1234,user_type:'principle'})
+function setup_login(id) {
+    return $.post('backends/login.php',{id:id,user_type:'principle'})
         .then(function(res) {
             console.log('logged in ',res);
         });
@@ -368,16 +368,41 @@ function put_graph(res) {
         }
     }
 }
+function setup_tables() {
+    $('.table').bootstrapTable({
+        columns: [{
+            field: 'id',
+            title: 'Item ID'
+        }, {
+            field: 'name',
+            title: 'Item Name'
+        }, {
+            field: 'price',
+            title: 'Item Price'
+        }],
+        data: [{
+            id: 1,
+            name: 'Item 1',
+            price: '$1'
+        }, {
+            id: 2,
+            name: 'Item 2',
+            price: '$2'
+        }]
+    });
+}
 $(function(){
-    setup_login()
+    setup_login(1234)
         .then(get_conclusion)
         .done(put_conclusion_bar)
         .done(put_graph);
+
     setup_Conclusion_bar();
     setup_acheivement();
     setup_over4years();
     setup_studentGrade();
     setup_numOfStudents();
-    setTimeout(function() {
-    },1000);
+
+    setup_tables();
+
 });

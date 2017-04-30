@@ -1,3 +1,5 @@
+var charts = {};
+
 function setup_studentGrade() {
     var $e = $('#studentGrade');
     var implement_chart = function() {
@@ -9,7 +11,7 @@ function setup_studentGrade() {
                     backgroundColor: 'rgba(75,192,192,1.0)',
                     borderColor: 'rgba(75,192,192,1)',
                     borderWidth: 1,
-                    data: [0,0,0,0,5,8,10,7],
+                    data: [0,0,0,0,0,0,0,0],
                 }
             ]
         };
@@ -56,6 +58,7 @@ function setup_studentGrade() {
             responsive:false,
             options: opt,
         });
+        charts['studentGrade'] = myLineChart;
     }
     var implement_link = function() {
         $e.parents('.shadowBox').find('.link').on('click',function() {
@@ -77,22 +80,22 @@ function setup_disciplineScore() {
     var implement_chart = function(){
         var data = {
         labels: [
-            "Good",
+            "Poor",
             "Fair",
-            "Poor"
+            "Good"
         ],
         datasets: [
             {
-                data: [18, 10, 2],
+                data: [0,0,0],
                 backgroundColor: [
-                    "#36A2EB",
-                    "#FFCE56",
                     "#FF6384",
+                    "#FFCE56",
+                    "#36A2EB",
                 ],
                 hoverBackgroundColor: [
-                    "#35aeff",
-                    "#ffc537",
                     "#ff496f",
+                    "#ffc537",
+                    "#35aeff",
                 ]
             }]
         };
@@ -117,6 +120,7 @@ function setup_disciplineScore() {
                 }
             }
         });
+        charts['discipline'] = myDoughnutChart;
     }
     var implement_link = function() {
         $e.parents('.shadowBox').find('.link').on('click',function() {
@@ -136,20 +140,20 @@ function setup_disciplineScore() {
 function setup_Conclusion_bar(){
     var implement_Conclusion_tab = function(i,$e){
         var res = [{
-            count:35,subscript:'Supervisee',link:'#'},{
-            count:2,subscript:'Probation',link:'#'},{
-            count:5,subscript:'On Sick Leave',link:'#'},{
-            count:1,subscript:'Exchange',link:'#'},{
-            count:0,subscript:'Super Senior',link:'#'},{
+            count:0,subscript:'Students',key:'count',link:'#'},{
+            count:0,subscript:'Prohibition',key:'prohibition',link:'#'},{
+            count:0,subscript:'On Sick Leave',key:'intms_sick_and_oreason',link:'#'},{
+            count:0,subscript:'Exchange',key:'exchange',link:'#'},{
+            count:0,subscript:'Super Senior',key:'superSenior',link:'#'},{
         }];
-        $e.find('.count').html(res[i].count);
+        $e.find('.conclusion').html(res[i].count)
+            .attr('key',res[i].key);
         $e.find('.subscript').html(res[i].subscript);
         $e.find('.link').attr('href',res[i].link)
             .on('click',function(){
                 BootstrapDialog.show({
-                    cssClass: 'tempinfo',
                     message: function(){
-                        return $('<div class="row" style="margin:10px 0px;"></div>').append('<div class="col-sm-12"><img style="" class="img-responsive" src="img/info.png"></div>');
+                        return $('<div class="row" style="margin:120px 0px;"></div>').append($e.clone().attr('class','col-sm-offset-3 col-sm-6'));
                     }
                 });
             });
@@ -166,7 +170,84 @@ function setup_Conclusion_bar(){
     }
 }
 
+function setup_login(id) {
+    return $.post('backends/login.php',{id:id,user_type:'instructor'})
+        .then(function(res) {
+            console.log('logged in ',res);
+        });
+}
+function get_conclusion() {
+    return $.getJSON('backends/output.php',{view:'graph',type:'conclusion'})
+        .then(function(res) {
+            console.log(res);
+            return res;
+        });
+}
+function put_conclusion_bar(res) {
+    var $els = $('.conclusion');
+    for (var i in $els) {
+        var $e = $els.eq(i);
+        var key = $e.attr('key');
+        $e.html(res[key]);
+    }
+}
+var cal_suitable_data = {
+    achievements : function(data) {
+        var out = [];
+        for (var i = 1; i <= 4; i++) {
+            out.push(data[i]);
+        }
+        return [{data:out}];
+    },
+    over4years : function(data) {
+        var out = [];
+        for (var i = 5; i <= 8; i++) {
+            out.push(data[i]);
+        }
+        return [{data:out}];
+    },
+    studentGrade : function(data) {
+        var out = Object.assign(new Uint8Array(8),data);
+        return [{data:out}];
+    },
+    numOfStudents : function(data) {
+        var out = [];
+        for (var i = 0; i < 5; i++) {
+            out[i] = data[i];
+        }
+        for(var year = 6-1; year<data.length;year++){
+            for(var major = 0;major<data[year].length;major++){
+                out[5-1]['data'][major] += out[year]['data'][major];
+            }
+        }
+        return out;
+    },
+    discipline : function(data) {
+        return [{data:data}];
+    }
+};
+function put_graph(res) {
+    for (var key in charts) {
+        if (charts.hasOwnProperty(key)) {
+            console.log('----------------');
+            console.log(key);
+            var chart = charts[key];
+            var chart_datasets = chart.config.data.datasets;
+            var newData = cal_suitable_data[key](res[key]);
+            console.log(chart_datasets);
+            console.log(newData);
+            console.log('----------------');
+            $.extend(true,chart_datasets , newData);
+            chart.update();
+        }
+    }
+}
 $(function(){
+    setup_login(2)
+        .then(get_conclusion)
+        .done(put_conclusion_bar)
+        .done(put_graph);
+
     setup_Conclusion_bar();
     setup_disciplineScore();
     setup_studentGrade();

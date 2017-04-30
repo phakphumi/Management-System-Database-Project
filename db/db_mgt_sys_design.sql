@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.4.3
--- http://www.phpmyadmin.net
+-- version 4.6.5.2
+-- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Apr 29, 2017 at 10:49 PM
--- Server version: 5.6.24
--- PHP Version: 5.5.24
+-- Host: 127.0.0.1
+-- Generation Time: Apr 30, 2017 at 05:47 PM
+-- Server version: 10.1.21-MariaDB
+-- PHP Version: 7.1.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `db_mgt_sys_design`
@@ -26,12 +26,12 @@ SET time_zone = "+00:00";
 -- Table structure for table `achievement`
 --
 
-CREATE TABLE IF NOT EXISTS `achievement` (
+CREATE TABLE `achievement` (
   `acmID` int(11) NOT NULL,
   `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL COMMENT 'ชื่อรางวัลที่ได้',
   `description` varchar(500) COLLATE utf8_unicode_ci NOT NULL COMMENT 'รายละเอียดของรางวัล',
   `year` int(11) NOT NULL COMMENT 'ปีที่ได้รับรางวัล'
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `achievement`
@@ -46,12 +46,12 @@ INSERT INTO `achievement` (`acmID`, `name`, `description`, `year`) VALUES
 -- Table structure for table `activity`
 --
 
-CREATE TABLE IF NOT EXISTS `activity` (
+CREATE TABLE `activity` (
   `activityID` int(11) NOT NULL,
   `name` varchar(20) COLLATE utf8_unicode_ci NOT NULL COMMENT 'ชื่อกิจกรรม',
   `belongTo` varchar(20) COLLATE utf8_unicode_ci NOT NULL COMMENT 'หน่วยงานที่จัดกิจกรรม',
   `description` varchar(100) COLLATE utf8_unicode_ci NOT NULL COMMENT 'รายละเอียดกิจกรรม'
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `activity`
@@ -66,7 +66,7 @@ INSERT INTO `activity` (`activityID`, `name`, `belongTo`, `description`) VALUES
 -- Table structure for table `admission_activity`
 --
 
-CREATE TABLE IF NOT EXISTS `admission_activity` (
+CREATE TABLE `admission_activity` (
   `studentID` int(11) NOT NULL,
   `activityID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -84,13 +84,13 @@ INSERT INTO `admission_activity` (`studentID`, `activityID`) VALUES
 -- Table structure for table `course`
 --
 
-CREATE TABLE IF NOT EXISTS `course` (
+CREATE TABLE `course` (
   `CID` int(11) NOT NULL COMMENT 'รหัสวิชา',
   `name` varchar(20) COLLATE utf8_unicode_ci NOT NULL COMMENT 'ชื่อวิชา',
   `description` varchar(100) COLLATE utf8_unicode_ci NOT NULL COMMENT 'รายละเอียดวิชา',
   `type` varchar(20) COLLATE utf8_unicode_ci NOT NULL COMMENT 'หมวดวิชา',
   `credit` int(11) NOT NULL COMMENT 'หน่วยกิต'
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `course`
@@ -106,13 +106,13 @@ INSERT INTO `course` (`CID`, `name`, `description`, `type`, `credit`) VALUES
 -- Table structure for table `discipline`
 --
 
-CREATE TABLE IF NOT EXISTS `discipline` (
+CREATE TABLE `discipline` (
   `EID` int(11) NOT NULL,
   `cause` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `score` int(11) NOT NULL,
   `date` date NOT NULL,
   `studentID` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `discipline`
@@ -128,7 +128,7 @@ INSERT INTO `discipline` (`EID`, `cause`, `score`, `date`, `studentID`) VALUES
 -- Table structure for table `enrolled`
 --
 
-CREATE TABLE IF NOT EXISTS `enrolled` (
+CREATE TABLE `enrolled` (
   `TID` int(11) NOT NULL,
   `studentID` int(11) NOT NULL,
   `grade` varchar(2) COLLATE utf8_unicode_ci NOT NULL,
@@ -141,7 +141,33 @@ CREATE TABLE IF NOT EXISTS `enrolled` (
 
 INSERT INTO `enrolled` (`TID`, `studentID`, `grade`, `attendance`) VALUES
 (2, 57310127, 'A', 40),
+(3, 57310127, 'C+', 2),
 (4, 57310878, 'B+', 30);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `grade_values`
+--
+
+CREATE TABLE `grade_values` (
+  `grade` varchar(2) COLLATE utf8_bin NOT NULL,
+  `value` decimal(2,1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dumping data for table `grade_values`
+--
+
+INSERT INTO `grade_values` (`grade`, `value`) VALUES
+('A', '4.0'),
+('B', '3.0'),
+('B+', '3.5'),
+('C', '2.0'),
+('C+', '2.5'),
+('D', '1.0'),
+('D+', '1.5'),
+('F', '0.0');
 
 -- --------------------------------------------------------
 
@@ -149,7 +175,7 @@ INSERT INTO `enrolled` (`TID`, `studentID`, `grade`, `attendance`) VALUES
 -- Table structure for table `instructor`
 --
 
-CREATE TABLE IF NOT EXISTS `instructor` (
+CREATE TABLE `instructor` (
   `nationalID` varchar(13) COLLATE utf8_unicode_ci NOT NULL,
   `instructorID` int(11) NOT NULL,
   `title` varchar(10) COLLATE utf8_unicode_ci NOT NULL
@@ -169,21 +195,21 @@ INSERT INTO `instructor` (`nationalID`, `instructorID`, `title`) VALUES
 -- Table structure for table `intermission`
 --
 
-CREATE TABLE IF NOT EXISTS `intermission` (
+CREATE TABLE `intermission` (
   `intermID` int(11) NOT NULL,
   `type` enum('study-aboard','sick','personal-reason') COLLATE utf8_unicode_ci NOT NULL,
   `note` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `begin` date NOT NULL,
   `end` date NOT NULL,
   `studentID` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `intermission`
 --
 
 INSERT INTO `intermission` (`intermID`, `type`, `note`, `begin`, `end`, `studentID`) VALUES
-(1, 'sick', 'ตรวจหาเชื้อ HIV', '2017-04-21', '2017-04-21', 57310127),
+(1, 'sick', 'ตรวจหาเชื้อ HIV', '2017-04-21', '2017-05-11', 57310127),
 (2, 'personal-reason', 'เกณฑ์หทาร', '2017-04-07', '2017-04-09', 57310127);
 
 -- --------------------------------------------------------
@@ -192,7 +218,7 @@ INSERT INTO `intermission` (`intermID`, `type`, `note`, `begin`, `end`, `student
 -- Table structure for table `obtain`
 --
 
-CREATE TABLE IF NOT EXISTS `obtain` (
+CREATE TABLE `obtain` (
   `studentID` int(11) NOT NULL,
   `acmID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -210,14 +236,14 @@ INSERT INTO `obtain` (`studentID`, `acmID`) VALUES
 -- Table structure for table `organization`
 --
 
-CREATE TABLE IF NOT EXISTS `organization` (
+CREATE TABLE `organization` (
   `organID` int(11) NOT NULL COMMENT 'รหัสประจำหน่วยงาน',
   `name` varchar(40) COLLATE utf8_unicode_ci NOT NULL COMMENT 'ชื่อของหน่วยงาน',
   `country` enum('Thai','Upcountry') COLLATE utf8_unicode_ci NOT NULL COMMENT 'ประเทศที่หน่วยงานนั้นตั้งอยู๋',
   `phone` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
   `location` varchar(100) COLLATE utf8_unicode_ci NOT NULL COMMENT 'สถานที่',
   `email` varchar(30) COLLATE utf8_unicode_ci NOT NULL COMMENT 'อีเมล์สำหรับติดต่อบริษัท'
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `organization`
@@ -233,7 +259,7 @@ INSERT INTO `organization` (`organID`, `name`, `country`, `phone`, `location`, `
 -- Table structure for table `personal`
 --
 
-CREATE TABLE IF NOT EXISTS `personal` (
+CREATE TABLE `personal` (
   `nationalID` varchar(13) COLLATE utf8_unicode_ci NOT NULL,
   `firstName` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `lastName` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
@@ -264,7 +290,7 @@ INSERT INTO `personal` (`nationalID`, `firstName`, `lastName`, `gender`, `birthD
 -- Table structure for table `principle`
 --
 
-CREATE TABLE IF NOT EXISTS `principle` (
+CREATE TABLE `principle` (
   `nationalID` varchar(13) COLLATE utf8_unicode_ci NOT NULL,
   `instructorID` int(11) NOT NULL,
   `section` varchar(20) COLLATE utf8_unicode_ci NOT NULL
@@ -283,7 +309,7 @@ INSERT INTO `principle` (`nationalID`, `instructorID`, `section`) VALUES
 -- Table structure for table `program`
 --
 
-CREATE TABLE IF NOT EXISTS `program` (
+CREATE TABLE `program` (
   `programID` int(11) NOT NULL,
   `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `degree` enum('Bachelor','Master','Doctor') COLLATE utf8_unicode_ci NOT NULL,
@@ -291,7 +317,7 @@ CREATE TABLE IF NOT EXISTS `program` (
   `description` varchar(500) COLLATE utf8_unicode_ci NOT NULL COMMENT 'คำอธิบายของหลักสูตร',
   `established` date NOT NULL COMMENT 'วันที่ร่างหลักสูตร',
   `firstUsed` date NOT NULL COMMENT 'วันที่หลักสูตรถูกใช้ครั้งแรก'
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `program`
@@ -310,7 +336,7 @@ INSERT INTO `program` (`programID`, `name`, `degree`, `courseLength`, `descripti
 -- Table structure for table `research`
 --
 
-CREATE TABLE IF NOT EXISTS `research` (
+CREATE TABLE `research` (
   `instructorID` int(11) NOT NULL,
   `studentID` int(11) NOT NULL,
   `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL COMMENT 'ชื่อหัวข้อวิจัย',
@@ -331,7 +357,7 @@ INSERT INTO `research` (`instructorID`, `studentID`, `name`, `type`, `field`) VA
 -- Table structure for table `staff`
 --
 
-CREATE TABLE IF NOT EXISTS `staff` (
+CREATE TABLE `staff` (
   `nationalID` varchar(13) COLLATE utf8_unicode_ci NOT NULL,
   `staffID` int(11) NOT NULL,
   `section` varchar(20) COLLATE utf8_unicode_ci NOT NULL
@@ -350,7 +376,7 @@ INSERT INTO `staff` (`nationalID`, `staffID`, `section`) VALUES
 -- Table structure for table `student`
 --
 
-CREATE TABLE IF NOT EXISTS `student` (
+CREATE TABLE `student` (
   `nationalID` varchar(13) COLLATE utf8_unicode_ci NOT NULL,
   `studentID` int(11) NOT NULL,
   `instructorID` int(11) NOT NULL,
@@ -368,7 +394,8 @@ CREATE TABLE IF NOT EXISTS `student` (
 
 INSERT INTO `student` (`nationalID`, `studentID`, `instructorID`, `organID`, `programID`, `start`, `end`, `year`, `status`) VALUES
 ('1101402006095', 57310127, 0, 1, 1, '2017-04-01', '2017-04-30', 2017, 'on-studying'),
-('1234567890123', 57310878, 2, 2, 1, '2017-04-02', '2017-04-30', 2017, 'on-studying');
+('1234567890123', 57310878, 2, 2, 1, '2017-04-02', '2017-04-30', 2017, 'on-studying'),
+('999999999', 55310505, 2, 1, 2, '2017-04-03', '2017-04-27', 2010, 'on-studying');
 
 -- --------------------------------------------------------
 
@@ -376,14 +403,14 @@ INSERT INTO `student` (`nationalID`, `studentID`, `instructorID`, `organID`, `pr
 -- Table structure for table `teach`
 --
 
-CREATE TABLE IF NOT EXISTS `teach` (
+CREATE TABLE `teach` (
   `TID` int(11) NOT NULL,
   `instructorID` int(11) NOT NULL,
   `CID` int(11) NOT NULL,
   `section` int(11) NOT NULL,
   `year` int(11) NOT NULL,
   `term` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `teach`
@@ -438,6 +465,12 @@ ALTER TABLE `enrolled`
   ADD PRIMARY KEY (`TID`),
   ADD UNIQUE KEY `unique_index` (`TID`,`studentID`),
   ADD KEY `studentID` (`studentID`);
+
+--
+-- Indexes for table `grade_values`
+--
+ALTER TABLE `grade_values`
+  ADD PRIMARY KEY (`grade`);
 
 --
 -- Indexes for table `instructor`
@@ -525,42 +558,42 @@ ALTER TABLE `teach`
 -- AUTO_INCREMENT for table `achievement`
 --
 ALTER TABLE `achievement`
-  MODIFY `acmID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `acmID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `activity`
 --
 ALTER TABLE `activity`
-  MODIFY `activityID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `activityID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `course`
 --
 ALTER TABLE `course`
-  MODIFY `CID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'รหัสวิชา',AUTO_INCREMENT=3;
+  MODIFY `CID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'รหัสวิชา', AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `discipline`
 --
 ALTER TABLE `discipline`
-  MODIFY `EID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `EID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `intermission`
 --
 ALTER TABLE `intermission`
-  MODIFY `intermID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `intermID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `organization`
 --
 ALTER TABLE `organization`
-  MODIFY `organID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'รหัสประจำหน่วยงาน',AUTO_INCREMENT=3;
+  MODIFY `organID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'รหัสประจำหน่วยงาน', AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `program`
 --
 ALTER TABLE `program`
-  MODIFY `programID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+  MODIFY `programID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `teach`
 --
 ALTER TABLE `teach`
-  MODIFY `TID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `TID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- Constraints for dumped tables
 --

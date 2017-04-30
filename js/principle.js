@@ -1,3 +1,6 @@
+
+var charts = {};
+
 function setup_numOfStudents() {
     var $e = $('#numOfStudents');
     var implement_chart = function() {
@@ -7,27 +10,27 @@ function setup_numOfStudents() {
               label: "Freshman",
               backgroundColor: "#F29220",
               borderColor: "#F29220",
-              data: [40,20,30,10,10,10,5,10,10,30]
+              data: [0,0,0,0,0,0,0,0,0,0]
             }, {
               label: "Sophomore ",
               backgroundColor: "#4365B0",
               borderColor: "#4365B0",
-              data: [60,80,70,20,30,10,20,10,10,20]
+              data: [0,0,0,0,0,0,0,0,0,0]
             }, {
               label: "Junior ",
               backgroundColor: "#F365B0",
               borderColor: "#F365B0",
-              data: [60,80,70,20,30,10,20,10,10,20]
+              data: [0,0,0,0,0,0,0,0,0,0]
             }, {
               label: "Senior ",
               backgroundColor: "#03a9f4",
               borderColor: "#03a9f4",
-              data: [10,5,10,30,10,10,25,10,10,10]
+              data: [0,0,0,0,0,0,0,0,0,0]
             }, {
               label: "Super senior ",
               backgroundColor: "#D00",
               borderColor: "#D00",
-              data: [10,5,10,30,10,10,25,10,10,10]
+              data: [0,0,0,0,0,0,0,0,0,0]
             }]
         };
         var opt = {
@@ -48,6 +51,7 @@ function setup_numOfStudents() {
             data: data,
             options: opt,
         });
+        charts['numOfStudents'] = myBarChart;
     }
     var implement_link = function() {
         $e.parents('.shadowBox').find('.link').on('click',function() {
@@ -74,7 +78,7 @@ function setup_studentGrade() {
                     backgroundColor: 'rgba(75,192,192,1.0)',
                     borderColor: 'rgba(75,192,192,1)',
                     borderWidth: 1,
-                    data: [10,10,10,10,50,80,100,70],
+                    data: [0,0,0,0,0,0,0,0],
                 }
             ]
         };
@@ -121,6 +125,7 @@ function setup_studentGrade() {
             responsive:false,
             options: opt,
         });
+        charts['studentGrade'] = myLineChart;
     }
     var implement_link = function() {
         $e.parents('.shadowBox').find('.link').on('click',function() {
@@ -147,7 +152,7 @@ function setup_over4years() {
         ],
         datasets: [
             {
-                data: [50, 30, 15,10],
+                data: [0,0,0,0],
                 backgroundColor: [
                     "#36A2EB",
                     "#FFCE56",
@@ -183,6 +188,7 @@ function setup_over4years() {
                 }
             }
         });
+        charts['over4years'] = myDoughnutChart;
     }
     var implement_link = function() {
         $e.parents('.shadowBox').find('.link').on('click',function() {
@@ -209,7 +215,7 @@ function setup_acheivement() {
         ],
         datasets: [
             {
-                data: [20, 30, 40, 55],
+                data: [0,0,0,0],
                 backgroundColor: [
                     "#36A2EB",
                     "#FFCE56",
@@ -245,6 +251,7 @@ function setup_acheivement() {
                 }
             }
         });
+        charts['achievements'] = myDoughnutChart;
     }
     var implement_link = function() {
         $e.parents('.shadowBox').find('.link').on('click',function() {
@@ -263,13 +270,14 @@ function setup_acheivement() {
 function setup_Conclusion_bar(){
     var implement_Conclusion_tab = function(i,$e){
         var res = [{
-            count:10100,subscript:'Supervisee',link:'#'},{
-            count:1111,subscript:'Probation',link:'#'},{
-            count:2222,subscript:'On Sick Leave',link:'#'},{
-            count:3333,subscript:'Exchange',link:'#'},{
-            count:4444,subscript:'Super Senior',link:'#'},{
+            count:0,subscript:'Students',key:'count',link:'#'},{
+            count:0,subscript:'Prohibition',key:'prohibition',link:'#'},{
+            count:0,subscript:'On Sick Leave',key:'intms_sick_and_oreason',link:'#'},{
+            count:0,subscript:'Exchange',key:'exchange',link:'#'},{
+            count:0,subscript:'Super Senior',key:'superSenior',link:'#'},{
         }];
-        $e.find('.count').html(res[i].count);
+        $e.find('.conclusion').html(res[i].count)
+            .attr('key',res[i].key);
         $e.find('.subscript').html(res[i].subscript);
         $e.find('.link').attr('href',res[i].link)
             .on('click',function(){
@@ -291,13 +299,85 @@ function setup_Conclusion_bar(){
         implement_Conclusion_tab(i,$thisCol);
     }
 }
-
+function setup_login() {
+    return $.post('backends/login.php',{id:1234,user_type:'principle'})
+        .then(function(res) {
+            console.log('logged in ',res);
+        });
+}
+function get_conclusion() {
+    return $.getJSON('backends/output.php',{view:'graph',type:'conclusion'})
+        .then(function(res) {
+            console.log(res);
+            return res;
+        });
+}
+function put_conclusion_bar(res) {
+    var $els = $('.conclusion');
+    for (var i in $els) {
+        var $e = $els.eq(i);
+        var key = $e.attr('key');
+        $e.html(res[key]);
+    }
+}
+var cal_suitable_data = {
+    achievements : function(data) {
+        var out = [];
+        for (var i = 1; i <= 4; i++) {
+            out.push(data[i]);
+        }
+        return [{data:out}];
+    },
+    over4years : function(data) {
+        var out = [];
+        for (var i = 5; i <= 8; i++) {
+            out.push(data[i]);
+        }
+        return [{data:out}];
+    },
+    studentGrade : function(data) {
+        var out = Object.assign(new Uint8Array(8),data);
+        return [{data:out}];
+    },
+    numOfStudents : function(data) {
+        var out = [];
+        for (var i = 0; i < 5; i++) {
+            out[i] = data[i];
+        }
+        for(var year = 6-1; year<data.length;year++){
+            for(var major = 0;major<data[year].length;major++){
+                out[5-1]['data'][major] += out[year]['data'][major];
+            }
+        }
+        return out;
+    }
+};
+function put_graph(res) {
+    for (var key in charts) {
+        if (charts.hasOwnProperty(key)) {
+            var chart = charts[key];
+            var chart_datasets = chart.config.data.datasets;
+            var newData = cal_suitable_data[key](res[key]);
+            console.log('----------------');
+            console.log(key);
+            console.log(chart_datasets);
+            console.log(newData);
+            console.log('----------------');
+            $.extend(true,chart_datasets , newData);
+            chart.update();
+        }
+    }
+}
 $(function(){
+    setup_login()
+        .then(get_conclusion)
+        .done(put_conclusion_bar)
+        .done(put_graph);
     setup_Conclusion_bar();
     setup_acheivement();
     setup_over4years();
     setup_studentGrade();
+    setup_numOfStudents();
     setTimeout(function() {
-        setup_numOfStudents();
     },1000);
 });

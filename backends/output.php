@@ -35,7 +35,7 @@
                         $personal->getAllTableData();
 
                         break;
-                    
+
                     case 'enrolled':
 
                         # code...for enrolled table view as principle
@@ -87,9 +87,15 @@
 
                 }
 
-            } else {
+            } else if($_GET["view"] === "graph") {
 
                 switch ($_GET["type"]) {
+                    case 'conclusion' :
+
+                        $personal->getPrincipleGraphData();
+
+
+                        break;
 
                     case 'personal':
 
@@ -97,7 +103,7 @@
                         $personal->getPrincipleGraphData();
 
                         break;
-                    
+
                     case 'enrolled':
 
                         # code...for enrolled graph view as principle
@@ -163,7 +169,7 @@
                         $personal->getInstructorTableData($_SESSION["id"]);
 
                         break;
-                    
+
                     case 'enrolled':
 
                         # code...for enrolled table view as instructor
@@ -215,21 +221,28 @@
 
                 }
 
-            } else {
+            } else if($_GET["view"] === "graph") {
 
                 switch ($_GET["type"]) {
+
+                    case 'conclusion' :
+
+                        $personal->getInstructorGraphData($_SESSION['id']);
+
+                        break;
+
 
                     case 'personal':
 
                         # code...for enrolled graph view as instructor
-                        $personal->getInstructorGraphData();
+                        $personal->getInstructorGraphData($_SESSION['id']);
 
                         break;
-                    
+
                     case 'enrolled':
 
                         # code...for enrolled graph view as instructor
-                        $enrolled->getInstructorGraphData();
+                        $enrolled->getInstructorGraphData($_SESSION['id']);
 
                         break;
 
@@ -289,7 +302,7 @@
                     $personal->getAllTableData();
 
                     break;
-                
+
                 case 'enrolled':
 
                     # code...for enrolled table view as staff
@@ -342,7 +355,7 @@
             }
 
         }
-        
+
     }
 
 ?>
